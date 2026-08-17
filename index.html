@@ -3,17 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Бизнес-БухУчет | Бухгалтерское сопровождение бизнеса</title>
+  <title>Бизнес-БухУчет — Бухгалтерские и кадровые услуги для бизнеса</title>
+  <meta name="description" content="Профессиональное бухгалтерское сопровождение, кадровый учет и налоговая оптимизация для ИП и ООО.">
+  
   <style>
     :root {
       --primary: #2563eb;
       --primary-hover: #1d4ed8;
+      --secondary: #0d9488;
       --bg: #f8fafc;
       --card-bg: #ffffff;
       --text: #0f172a;
       --text-muted: #64748b;
       --border: #e2e8f0;
       --accent: #10b981;
+      --radius: 12px;
+      --transition: all 0.3s ease;
     }
 
     * {
@@ -55,17 +60,15 @@
     }
 
     .logo-icon {
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, #2563eb, #3b82f6);
-      border-radius: 10px;
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: var(--radius);
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      font-weight: 800;
-      font-size: 1.2rem;
-      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
     }
 
     .logo-text {
@@ -89,6 +92,8 @@
       border: none;
       cursor: pointer;
       transition: background 0.2s;
+      display: inline-block;
+      text-align: center;
     }
 
     .btn:hover {
@@ -98,7 +103,7 @@
     .hero {
       text-align: center;
       padding: 3.5rem 1rem 2rem;
-      max-width: 700px;
+      max-width: 750px;
       margin: 0 auto;
     }
 
@@ -118,6 +123,46 @@
       max-width: 1100px;
       margin: 0 auto;
       padding: 1.5rem 1rem;
+    }
+
+    /* SERVICES HIGHLIGHT */
+    .services-overview {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .overview-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .overview-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+      border-color: var(--primary);
+    }
+
+    .overview-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .overview-card p {
+      font-size: 0.925rem;
+      color: var(--text-muted);
+    }
+
+    /* TABS & PRICING */
+    .section-title {
+      text-align: center;
+      font-size: 1.75rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
     }
 
     .tabs {
@@ -144,6 +189,14 @@
       background: var(--primary);
       color: white;
       border-color: var(--primary);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
     }
 
     .pricing-card {
@@ -221,6 +274,7 @@
       white-space: nowrap;
     }
 
+    /* CONTACTS */
     .contact-section {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -277,7 +331,7 @@
     .messenger-btn {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      justify-content: center;
       padding: 0.75rem 1rem;
       border-radius: 8px;
       text-decoration: none;
@@ -300,14 +354,6 @@
       color: white;
     }
 
-    .tab-content {
-      display: none;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
     footer {
       text-align: center;
       padding: 2rem 1rem;
@@ -324,7 +370,15 @@
   <header>
     <div class="header-container">
       <a href="#" class="logo">
-        <div class="logo-icon">БВ</div>
+        <div class="logo-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 16l3-8 3 8a3 3 0 0 1-6 0z"/>
+            <path d="M2 16l3-8 3 8a3 3 0 0 1-6 0z"/>
+            <path d="M7 21h10"/>
+            <path d="M12 3v18"/>
+            <path d="M3 7h18"/>
+          </svg>
+        </div>
         <div class="logo-text">Бизнес-<span>БухУчет</span></div>
       </a>
       <a href="#callback" class="btn">Заказать расчет</a>
@@ -333,10 +387,27 @@
 
   <section class="hero">
     <h1>Надежный бухгалтерский учет для вашего бизнеса</h1>
-    <p>Кадровое оформление, расчет заработной платы и своевременная сдача отчетности без рисков и штрафов.</p>
+    <p>Кадровое оформление, расчет заработной платы и своевременная сдача отчетности для ИП и ООО без рисков и штрафов.</p>
   </section>
 
   <main class="container">
+
+    <div class="services-overview">
+      <div class="overview-card">
+        <h3>Комплексный учет</h3>
+        <p>Полный контроль финансовой отчетности и сдача деклараций в ФНС и СФР.</p>
+      </div>
+      <div class="overview-card">
+        <h3>Кадровый учет и ЗП</h3>
+        <p>Расчет выплат, отпускных, больничных, оформление сотрудников и приказов.</p>
+      </div>
+      <div class="overview-card">
+        <h3>Оптимизация налогов</h3>
+        <p>Подбор выгодного режима (УСН, ПСН), законное снижение налоговой нагрузки.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">Тарифы и стоимость услуг</h2>
     
     <div class="tabs">
       <button class="tab-btn active" onclick="switchTab(event, 'small')">До 8 сотрудников</button>
@@ -492,6 +563,7 @@
           <input type="hidden" name="access_key" value="269b350e-f717-49d1-9479-dde5840e799d">
           <input type="hidden" name="subject" value="Новая заявка с сайта Бизнес-БухУчет">
           <input type="hidden" name="from_name" value="Бизнес-БухУчет">
+          <input type="checkbox" name="botcheck" style="display: none;">
 
           <div class="form-group">
             <label for="name">ФИО *</label>
@@ -530,7 +602,9 @@
   </main>
 
   <footer>
-    <p>&copy; Бизнес-БухУчет. Все права защищены.</p>
+    <p><strong>Бизнес-БухУчет</strong> — Профессиональные услуги для ООО и ИП</p>
+    <p>Email: business.buhuchet@gmail.com | Домен: business-buhuchet.ru</p>
+    <p style="margin-top: 1rem; opacity: 0.7;">&copy; 2026 Бизнес-БухУчет. Все права защищены.</p>
   </footer>
 
   <script>
