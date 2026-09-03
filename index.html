@@ -4,15 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Бизнес-БухУчет — Бухгалтерские и кадровые услуги для бизнеса</title>
-  <meta name="description" content="Профессиональное бухгалтерское сопровождение, кадровый учет и налоговая оптимизация для ИП и ООО.">
+  <meta name="description" content="Профессиональное бухгалтерское сопровождение, кадровый учет, ЭДО и налоговая оптимизация.">
   
-  <!-- Иконка во вкладке браузера (Favicon) -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232563eb'/%3E%3Cpath d='M21 21l3-8 3 8a3 3 0 0 1-6 0zM5 21l3-8 3 8a3 3 0 0 1-6 0zM10 26h12M16 6v18M6 11h20' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E">
 
   <style>
     :root {
       --primary: #2563eb;
-      --primary-hover: #1d4ed8;
+      --primary-hover: #1e40af;
       --secondary: #0d9488;
       --bg: #f8fafc;
       --card-bg: #ffffff;
@@ -20,608 +19,425 @@
       --text-muted: #64748b;
       --border: #e2e8f0;
       --accent: #10b981;
-      --radius: 12px;
-      --transition: all 0.3s ease;
+      --radius: 16px;
+      --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
 
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
+    .fade-in-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+    .fade-in-up.visible { opacity: 1; transform: translateY(0); }
+
+    .hero-wrapper {
+      background: linear-gradient(-45deg, #f0f9ff, #e0f2fe, #f8fafc, #eff6ff);
+      background-size: 400% 400%; animation: gradientBG 15s ease infinite;
+      border-bottom: 1px solid var(--border); padding-bottom: 4rem;
+    }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; }
     }
 
     header {
-      background: var(--card-bg);
-      border-bottom: 1px solid var(--border);
-      padding: 1rem 1.5rem;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px);
+      padding: 1rem 1.5rem; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.02);
     }
-
-    .header-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-      color: var(--text);
-    }
-
+    .header-container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text); transition: transform 0.3s; }
+    .logo:hover { transform: scale(1.02); }
     .logo-icon {
-      width: 42px;
-      height: 42px;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      border-radius: var(--radius);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+      width: 42px; height: 42px; background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
     }
-
-    .logo-text {
-      font-size: 1.25rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    .logo-text span {
-      color: var(--primary);
-    }
+    .logo-text { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; }
+    .logo-text span { color: var(--primary); }
 
     .btn {
-      background-color: var(--primary);
-      color: white;
-      padding: 0.6rem 1.25rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s;
-      display: inline-block;
-      text-align: center;
+      background-color: var(--primary); color: white; padding: 0.7rem 1.5rem; border-radius: 10px;
+      text-decoration: none; font-weight: 600; font-size: 0.95rem; border: none; cursor: pointer;
+      transition: var(--transition); display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
     }
+    .btn:hover { background-color: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35); }
 
-    .btn:hover {
-      background-color: var(--primary-hover);
-    }
+    .hero { text-align: center; padding: 4rem 1rem 0; max-width: 800px; margin: 0 auto; }
+    .hero h1 { font-size: 2.75rem; font-weight: 900; margin-bottom: 1rem; line-height: 1.2; color: #0f172a; letter-spacing: -0.03em; }
+    .hero p { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 2.5rem; }
+    .hero-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
 
-    .hero {
-      text-align: center;
-      padding: 3.5rem 1rem 2rem;
-      max-width: 750px;
-      margin: 0 auto;
-    }
+    .container { max-width: 1100px; margin: -2rem auto 0; padding: 0 1rem 2rem; position: relative; z-index: 10; }
 
-    .hero h1 {
-      font-size: 2.25rem;
-      font-weight: 800;
-      margin-bottom: 0.75rem;
-      letter-spacing: -0.025em;
-    }
-
-    .hero p {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 1.5rem 1rem;
-    }
-
-    /* SERVICES HIGHLIGHT */
-    .services-overview {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
-
+    /* КАРТОЧКИ УСЛУГ */
+    .services-overview { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 4rem; }
     .overview-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      transition: var(--transition);
+      background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 2rem 1.5rem; transition: var(--transition); box-shadow: 0 4px 15px rgba(0,0,0,0.02); text-align: center;
     }
+    .overview-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); border-color: #bfdbfe; }
+    .overview-card-icon { width: 50px; height: 50px; background: #eff6ff; color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
+    .overview-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; font-weight: 700; }
+    .overview-card p { font-size: 0.95rem; color: var(--text-muted); }
 
-    .overview-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.04);
-      border-color: var(--primary);
-    }
-
-    .overview-card h3 {
-      font-size: 1.15rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .overview-card p {
-      font-size: 0.925rem;
-      color: var(--text-muted);
-    }
-
-    /* TABS & PRICING */
-    .section-title {
-      text-align: center;
-      font-size: 1.75rem;
-      font-weight: 800;
-      margin-bottom: 1.5rem;
-    }
-
-    .tabs {
-      display: flex;
-      justify-content: center;
-      gap: 0.5rem;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-    }
-
+    /* ТАРИФЫ */
+    .section-title { text-align: center; font-size: 2rem; font-weight: 900; margin-bottom: 1.5rem; }
+    .tabs { display: flex; justify-content: center; gap: 0.75rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
     .tab-btn {
-      padding: 0.6rem 1.25rem;
-      border: 1px solid var(--border);
-      background: var(--card-bg);
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      transition: all 0.2s;
+      padding: 0.75rem 1.5rem; border: 2px solid transparent; background: var(--card-bg); border-radius: 12px;
+      cursor: pointer; font-weight: 600; font-size: 1rem; color: var(--text-muted); transition: var(--transition); box-shadow: 0 2px 10px rgba(0,0,0,0.03);
     }
+    .tab-btn:hover { color: var(--primary); }
+    .tab-btn.active { background: var(--primary); color: white; box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25); }
 
-    .tab-btn.active {
-      background: var(--primary);
-      color: white;
-      border-color: var(--primary);
-    }
-
-    .tab-content {
-      display: none;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
+    .tab-content { display: none; animation: fadeIn 0.4s ease; }
+    .tab-content.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
 
     .pricing-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 2rem;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-      margin-bottom: 2rem;
+      background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px;
+      padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.04); margin-bottom: 2rem; transition: var(--transition);
     }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 1rem;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .card-title {
-      font-size: 1.35rem;
-      font-weight: 700;
-    }
-
-    .card-price {
-      font-size: 1.75rem;
-      font-weight: 800;
-      color: var(--primary);
-    }
-
-    .card-price span {
-      font-size: 0.9rem;
-      font-weight: 400;
-      color: var(--text-muted);
-    }
+    .pricing-card:hover { box-shadow: 0 15px 40px rgba(0,0,0,0.08); }
+    .card-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px dashed var(--border); padding-bottom: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+    .card-title { font-size: 1.5rem; font-weight: 800; }
+    .card-price { font-size: 2rem; font-weight: 900; color: var(--primary); }
+    .card-price span { font-size: 1rem; font-weight: 500; color: var(--text-muted); }
 
     .service-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1rem;
-    }
-
-    .service-item {
-      background: var(--bg);
-      padding: 1rem;
-      border-radius: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .service-name {
-      font-size: 0.925rem;
-      font-weight: 500;
-    }
-
-    .service-meta {
-      text-align: right;
-    }
-
-    .service-price {
-      font-weight: 700;
-      color: var(--accent);
-      white-space: nowrap;
-      font-size: 0.95rem;
-    }
-
-    .service-freq {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      white-space: nowrap;
-    }
-
-    /* CONTACTS */
-    .contact-section {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    .contact-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 2rem;
-    }
-
-    .contact-card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
-    }
-
-    .form-group {
-      margin-bottom: 1rem;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 0.875rem;
-      font-weight: 600;
-      margin-bottom: 0.35rem;
-    }
-
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 0.65rem 0.85rem;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-size: 0.95rem;
-      outline: none;
-      transition: border 0.2s;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      border-color: var(--primary);
-    }
-
-    .messengers {
-      display: flex;
-      flex-direction: column;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 0.75rem;
-      margin-top: 1rem;
     }
+    .service-item {
+      background: #f8fafc; padding: 1rem; border-radius: 12px; display: flex; justify-content: space-between;
+      align-items: center; gap: 0.5rem; transition: var(--transition); border: 1px solid transparent;
+    }
+    .service-item:hover { background: #fff; border-color: #bfdbfe; transform: scale(1.02); }
+    .service-item.addon { background: linear-gradient(135deg, #eff6ff, #e0f2fe); border: 1px solid #bfdbfe; }
+    
+    .service-name { font-size: 0.85rem; font-weight: 600; color: #1e293b; line-height: 1.3; flex: 1; padding-right: 5px; }
+    .service-meta { text-align: right; white-space: nowrap; flex-shrink: 0; } 
+    .service-price { font-weight: 800; color: var(--accent); font-size: 0.95rem; white-space: nowrap; }
+    .service-item.addon .service-price { color: var(--primary); }
 
-    .messenger-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: opacity 0.2s;
+    /* КАЛЬКУЛЯТОР */
+    .calculator-section {
+      background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px;
+      padding: 3rem 2rem; margin-top: 4rem; box-shadow: 0 10px 40px rgba(0,0,0,0.05); position: relative; overflow: hidden;
     }
+    .calculator-section::before {
+      content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+    .calc-row { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
+    .calc-option {
+      display: flex; justify-content: space-between; align-items: center; padding: 1.25rem;
+      border: 2px solid var(--border); border-radius: 12px; cursor: pointer; transition: var(--transition); background: #fff;
+    }
+    .calc-option:hover { border-color: var(--primary); background: #f8fafc; }
+    .calc-option input { appearance: none; width: 22px; height: 22px; margin-right: 1rem; border: 2px solid var(--border); border-radius: 50%; outline: none; cursor: pointer; transition: 0.2s; position: relative; top: 5px; }
+    .calc-option input[type="checkbox"] { border-radius: 6px; }
+    .calc-option input:checked { border-color: var(--primary); background: var(--primary); }
+    .calc-option input:checked::after { content: ''; position: absolute; top: 4px; left: 4px; width: 10px; height: 10px; background: white; border-radius: 50%; }
+    .calc-option input[type="checkbox"]:checked::after { border-radius: 2px; width: 5px; height: 10px; top: 2px; left: 6px; background: transparent; border: solid white; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+    .calc-option-label { flex-grow: 1; font-weight: 600; font-size: 1rem; }
+    .calc-option-price { font-weight: 800; color: var(--primary); font-size: 1.05rem; white-space: nowrap; }
 
-    .messenger-btn:hover {
-      opacity: 0.9;
+    .calc-total-area {
+      background: #f8fafc; border-radius: 16px; padding: 2rem; display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 1.5rem; border: 1px solid var(--border);
     }
+    .calc-total-sum { font-size: 1rem; color: var(--text-muted); font-weight: 500;}
+    .calc-total-sum span { font-size: 2.2rem; font-weight: 900; color: var(--text); display: block; line-height: 1.2; }
 
-    .tg-btn {
-      background-color: #0088cc;
-      color: white;
+    /* ФОРМА И КОНТАКТЫ */
+    .contact-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; margin-top: 4rem; }
+    .contact-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+    
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label { display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .form-group input, .form-group textarea { 
+      width: 100%; padding: 0.8rem 1rem; border: 2px solid var(--border); 
+      border-radius: 10px; font-size: 1rem; transition: var(--transition); background: #f8fafc; 
     }
+    .form-group input:focus, .form-group textarea:focus { 
+      border-color: var(--primary); background: #fff; outline: none; box-shadow: 0 0 0 4px rgba(37,99,235,0.1); 
+    }
+    
+    .legal-consent { display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; }
+    .legal-consent input { margin-top: 0.2rem; cursor: pointer; transform: scale(1.2); }
+    .legal-consent a { color: var(--primary); font-weight: 600; text-decoration: none; border-bottom: 1px dashed var(--primary); cursor: pointer; }
+    
+    .messengers { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+    .messenger-btn { padding: 1rem; border-radius: 12px; font-weight: 700; font-size: 1rem; text-align: center; text-decoration: none; transition: var(--transition); }
+    .tg-btn { background-color: #e0f2fe; color: #0284c7; }
+    .tg-btn:hover { background-color: #0284c7; color: white; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(2,132,199,0.2); }
+    .max-btn { background-color: #e0e7ff; color: #4f46e5; }
+    .max-btn:hover { background-color: #4f46e5; color: white; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(79,70,229,0.2); }
 
-    .max-btn {
-      background-color: #6366f1;
-      color: white;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      color: var(--text-muted);
-      font-size: 0.875rem;
-      border-top: 1px solid var(--border);
-      margin-top: 4rem;
-      background: var(--card-bg);
-    }
+    footer { text-align: center; padding: 3rem 1rem; color: var(--text-muted); font-size: 0.9rem; margin-top: 5rem; background: #f1f5f9; border-top: 1px solid var(--border); }
+    
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); display: flex; justify-content: center; align-items: center; z-index: 1000; opacity: 0; visibility: hidden; transition: var(--transition); }
+    .modal-overlay.active { opacity: 1; visibility: visible; }
+    .modal-content { background: white; padding: 2.5rem; border-radius: 20px; max-width: 650px; width: 95%; max-height: 85vh; overflow-y: auto; position: relative; transform: scale(0.9); transition: var(--transition); }
+    .modal-overlay.active .modal-content { transform: scale(1); }
+    .modal-close { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 2rem; cursor: pointer; color: var(--text-muted); background: none; border: none; line-height: 1; }
+    
+    .cookie-banner { position: fixed; bottom: -100px; left: 0; width: 100%; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); color: white; padding: 1.25rem; text-align: center; transition: bottom 0.5s cubic-bezier(0.4, 0, 0.2, 1); z-index: 999; display: flex; justify-content: center; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+    .cookie-banner.show { bottom: 0; }
+    .cookie-btn { background: white; color: #0f172a; padding: 0.5rem 1.5rem; border-radius: 8px; font-weight: 700; border: none; cursor: pointer; }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="header-container">
-      <a href="#" class="logo">
-        <div class="logo-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M16 16l3-8 3 8a3 3 0 0 1-6 0z"/>
-            <path d="M2 16l3-8 3 8a3 3 0 0 1-6 0z"/>
-            <path d="M7 21h10"/>
-            <path d="M12 3v18"/>
-            <path d="M3 7h18"/>
-          </svg>
-        </div>
-        <div class="logo-text">Бизнес-<span>БухУчет</span></div>
-      </a>
-      <a href="#callback" class="btn">Заказать расчет</a>
-    </div>
-  </header>
+  <div class="hero-wrapper">
+    <header>
+      <div class="header-container">
+        <a href="#" class="logo">
+          <div class="logo-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 16l3-8 3 8a3 3 0 0 1-6 0z"/><path d="M2 16l3-8 3 8a3 3 0 0 1-6 0z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h18"/>
+            </svg>
+          </div>
+          <div class="logo-text">Бизнес-<span>БухУчет</span></div>
+        </a>
+        <a href="#callback" class="btn" style="box-shadow: none;">Связаться</a>
+      </div>
+    </header>
 
-  <section class="hero">
-    <h1>Надежный бухгалтерский учет для вашего бизнеса</h1>
-    <p>Кадровое оформление, расчет заработной платы и своевременная сдача отчетности для ИП и ООО без рисков и штрафов.</p>
-  </section>
+    <section class="hero fade-in-up">
+      <h1>Прозрачный учет. Без штрафов. Без нервов.</h1>
+      <p>Берем на себя кадровое оформление, расчет зарплат, ЭДО и своевременную сдачу отчетности. Развивайте бизнес, а цифры оставьте нам.</p>
+      <div class="hero-actions">
+        <a href="#calc" class="btn" style="padding: 0.9rem 2rem; font-size: 1.1rem;">Рассчитать стоимость</a>
+      </div>
+    </section>
+  </div>
 
   <main class="container">
-
-    <div class="services-overview">
-      <div class="overview-card">
-        <h3>Комплексный учет</h3>
-        <p>Полный контроль финансовой отчетности и сдача деклараций в ФНС и СФР.</p>
-      </div>
-      <div class="overview-card">
-        <h3>Кадровый учет и ЗП</h3>
-        <p>Расчет выплат, отпускных, больничных, оформление сотрудников и приказов.</p>
-      </div>
-      <div class="overview-card">
-        <h3>Оптимизация налогов</h3>
-        <p>Подбор выгодного режима (УСН, ПСН), законное снижение налоговой нагрузки.</p>
-      </div>
+    <div class="services-overview fade-in-up">
+      <div class="overview-card"><div class="overview-card-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><h3>Комплексный учет</h3><p>Полный контроль финансов и сдача всех деклараций в ФНС и СФР.</p></div>
+      <div class="overview-card"><div class="overview-card-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Кадры и Зарплата</h3><p>Расчет отпускных, больничных, оформление всех приказов по сотрудникам.</p></div>
+      <div class="overview-card"><div class="overview-card-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div><h3>ЭДО без проблем</h3><p>Ведение документооборота (ЭДО ЛОГИСТИК) для быстрой работы.</p></div>
     </div>
 
-    <h2 class="section-title">Тарифы и стоимость услуг</h2>
-    
-    <div class="tabs">
+    <h2 class="section-title fade-in-up">Тарифы на обслуживание</h2>
+    <div class="tabs fade-in-up">
       <button class="tab-btn active" onclick="switchTab(event, 'small')">До 8 сотрудников</button>
       <button class="tab-btn" onclick="switchTab(event, 'large')">От 8 сотрудников</button>
-      <button class="tab-btn" onclick="switchTab(event, 'annual')">Годовая отчетность и Патент</button>
+      <button class="tab-btn" onclick="switchTab(event, 'annual')">Годовая отчетность</button>
     </div>
 
     <!-- ТАРИФ 1 -->
-    <div id="small" class="tab-content active">
+    <div id="small" class="tab-content active fade-in-up">
       <div class="pricing-card">
         <div class="card-header">
-          <div class="card-title">Обслуживание бизнеса (до 8 сотрудников)</div>
+          <div class="card-title">ИП / ООО (до 8 человек)</div>
           <div class="card-price">10 000 ₽ <span>/ месяц</span></div>
         </div>
         <div class="service-grid">
-          <div class="service-item">
-            <span class="service-name">Кадровое оформление (прием, увольнение, перевод, приказы, ТК)</span>
-            <div class="service-meta"><div class="service-price">500 ₽</div><div class="service-freq">Разово</div></div>
-          </div>
-          <div class="service-item">
-            <span class="service-name">Регистрация сведений о трудовой деятельности в СФР (ЕФС-1)</span>
-            <div class="service-meta"><div class="service-price">500 ₽</div><div class="service-freq">По событию</div></div>
-          </div>
-          <div class="service-item">
-            <span class="service-name">Подготовка и выдача справок сотрудникам (2-НДФЛ, о доходах)</span>
-            <div class="service-meta"><div class="service-price">500 ₽</div><div class="service-freq">По запросу</div></div>
-          </div>
-          <div class="service-item">
-            <span class="service-name">Табельный учет рабочего времени</span>
-            <div class="service-meta"><div class="service-price">500 ₽</div><div class="service-freq">Ежемесячно</div></div>
-          </div>
-          <div class="service-item">
-            <span class="service-name">Предоставление стандартных налоговых вычетов</span>
-            <div class="service-meta"><div class="service-price">500 ₽</div><div class="service-freq">Ежемесячно</div></div>
-          </div>
-          <div class="service-item">
-            <span class="service-name">Формирование расчетно-платежной ведомости</span>
-            <div class="service-meta"><div class="service-price">500 ₽</div><div class="service-freq">Ежемесячно</div></div>
-          </div>
-          <div class="service-item">
-            <span class="service-name">Расчет среднего заработка (отпускные, больничные, командировки)</span>
-            <div class="service-meta"><div class="service-price">1 000 ₽</div><div class="service-freq">По событию</div></div>
-          </div>
-          <div class="service-item">
-            <span class="service-name">Ведение зарплатного проекта (обмен с банком, реестры)</span>
-            <div class="service-meta"><div class="service-price">1 000 ₽</div><div class="service-freq">Ежемесячно</div></div>
-          </div>
-          <div class="service-item">
-            <span class="service-name">Подготовка и сдача персонифицированной отчетности и уведомлений по ФОТ</span>
-            <div class="service-meta"><div class="service-price">1 000 ₽</div><div class="service-freq">Ежемесячно</div></div>
-          </div>
-          <div class="service-item">
-            <span class="service-name">Формирование и отправка квартальной отчетности (РСВ, 6-НДФЛ, ЕФС-1)</span>
-            <div class="service-meta"><div class="service-price">3 500 ₽</div><div class="service-freq">Ежеквартально</div></div>
-          </div>
-          <div class="service-item">
-            <span class="service-name">Сверка расчетов с бюджетом по налогам с ФОТ</span>
-            <div class="service-meta"><div class="service-price">500 ₽</div><div class="service-freq">Ежемесячно</div></div>
-          </div>
+          <div class="service-item addon"><span class="service-name">Ведение ЭДО (ЭДО ЛОГИСТИК)</span><div class="service-meta"><div class="service-price">+ 2 000 ₽</div></div></div>
+          <div class="service-item"><span class="service-name">Кадровое оформление (приказы, ТК)</span><div class="service-meta"><div class="service-price">500 ₽</div></div></div>
+          <div class="service-item"><span class="service-name">Отчетность в СФР (ЕФС-1)</span><div class="service-meta"><div class="service-price">500 ₽</div></div></div>
+          <div class="service-item"><span class="service-name">Выдача справок (2-НДФЛ)</span><div class="service-meta"><div class="service-price">500 ₽</div></div></div>
+          <div class="service-item"><span class="service-name">Табельный учет времени</span><div class="service-meta"><div class="service-price">500 ₽</div></div></div>
+          <div class="service-item"><span class="service-name">Расчетно-платежные ведомости</span><div class="service-meta"><div class="service-price">500 ₽</div></div></div>
+          <div class="service-item"><span class="service-name">Ведение зарплатного проекта</span><div class="service-meta"><div class="service-price">1 000 ₽</div></div></div>
+          <div class="service-item"><span class="service-name">Квартальная отчетность (РСВ, 6-НДФЛ)</span><div class="service-meta"><div class="service-price">3 500 ₽</div></div></div>
         </div>
       </div>
     </div>
 
     <!-- ТАРИФ 2 -->
-    <div id="large" class="tab-content">
+    <div id="large" class="tab-content fade-in-up">
       <div class="pricing-card">
         <div class="card-header">
-          <div class="card-title">Обслуживание бизнеса (от 8 сотрудников)</div>
+          <div class="card-title">ИП / ООО (от 8 человек)</div>
           <div class="card-price">12 000 ₽ <span>/ месяц</span></div>
         </div>
         <div class="service-grid">
-          <div class="service-item">
-            <span class="service-name">Кадровое оформление (прием, увольнение, перевод, приказы, ТК)</span>
-            <div class="service-meta"><div class="service-price">600 ₽</div><div class="service-freq">Разово</div></div>
-          </div>
-          <div class="service-item">
-            <span class="service-name">Регистрация сведений о трудовой деятельности в СФР (ЕФС-1)</span>
-            <div class="service-meta"><div class="service-price">600 ₽</div><div class="service-freq">По событию</div></div>
-          </div>
-          <div class="service-item">
-            <span class="service-name">Подготовка и выдача справок сотрудникам (2-НДФЛ, о доходах)</span>
-            <div class="service-meta"><div class="service-price">600 ₽</div><div class="service-freq">По запросу</div></div>
-          </div>
-          <div class="service-item">
-            <span class="service-name">Табельный учет рабочего времени</span>
-            <div class="service-meta"><div class="service-price">600 ₽</div><div class="service-freq">Ежемесячно</div></div>
-          </div>
-          <div class="service-item">
-            <span class="service-name">Предоставление стандартных налоговых вычетов</span>
-            <div class="service-meta"><div class="service-price">600 ₽</div><div class="service-freq">Ежемесячно</div></div>
-          </div>
-          <div class="service-item">
-            <span class="service-name">Формирование расчетно-платежной ведомости</span>
-            <div class="service-meta"><div class="service-price">600 ₽</div><div class="service-freq">Ежемесячно</div></div>
-          </div>
-          <div class="service-item">
-            <span class="service-name">Расчет среднего заработка (отпускные, больничные, командировки)</span>
-            <div class="service-meta"><div class="service-price">1 200 ₽</div><div class="service-freq">По событию</div></div>
-          </div>
-          <div class="service-item">
-            <span class="service-name">Ведение зарплатного проекта (обмен с банком, реестры)</span>
-            <div class="service-meta"><div class="service-price">1 200 ₽</div><div class="service-freq">Ежемесячно</div></div>
-          </div>
-          <div class="service-item">
-            <span class="service-name">Подготовка и сдача персонифицированной отчетности и уведомлений по ФОТ</span>
-            <div class="service-meta"><div class="service-price">1 200 ₽</div><div class="service-freq">Ежемесячно</div></div>
-          </div>
-          <div class="service-item">
-            <span class="service-name">Формирование и отправка квартальной отчетности (РСВ, 6-НДФЛ, ЕФС-1)</span>
-            <div class="service-meta"><div class="service-price">4 200 ₽</div><div class="service-freq">Ежеквартально</div></div>
-          </div>
-          <div class="service-item">
-            <span class="service-name">Сверка расчетов с бюджетом по налогам с ФОТ</span>
-            <div class="service-meta"><div class="service-price">600 ₽</div><div class="service-freq">Ежемесячно</div></div>
-          </div>
+          <div class="service-item addon"><span class="service-name">Ведение ЭДО (ЭДО ЛОГИСТИК)</span><div class="service-meta"><div class="service-price">+ 2 000 ₽</div></div></div>
+          <div class="service-item"><span class="service-name">Кадровое оформление (приказы, ТК)</span><div class="service-meta"><div class="service-price">600 ₽</div></div></div>
+          <div class="service-item"><span class="service-name">Отчетность в СФР (ЕФС-1)</span><div class="service-meta"><div class="service-price">600 ₽</div></div></div>
+          <div class="service-item"><span class="service-name">Выдача справок (2-НДФЛ)</span><div class="service-meta"><div class="service-price">600 ₽</div></div></div>
+          <div class="service-item"><span class="service-name">Табельный учет времени</span><div class="service-meta"><div class="service-price">600 ₽</div></div></div>
+          <div class="service-item"><span class="service-name">Расчетно-платежные ведомости</span><div class="service-meta"><div class="service-price">600 ₽</div></div></div>
+          <div class="service-item"><span class="service-name">Ведение зарплатного проекта</span><div class="service-meta"><div class="service-price">1 200 ₽</div></div></div>
+          <div class="service-item"><span class="service-name">Квартальная отчетность (РСВ, 6-НДФЛ)</span><div class="service-meta"><div class="service-price">4 200 ₽</div></div></div>
         </div>
       </div>
     </div>
 
     <!-- ТАРИФ 3 -->
-    <div id="annual" class="tab-content">
+    <div id="annual" class="tab-content fade-in-up">
       <div class="pricing-card">
         <div class="card-header">
-          <div class="card-title">Годовая отчетность и Спецрежимы</div>
+          <div class="card-title">Годовая отчетность и Патент</div>
           <div class="card-price">5 000 ₽ <span>/ под ключ</span></div>
         </div>
         <div class="service-grid">
-          <div class="service-item">
-            <span class="service-name">Сдача годовой отчетности (Декларация УСН / 3-НДФЛ)</span>
-            <div class="service-meta"><div class="service-price">5 000 ₽</div></div>
-          </div>
-          <div class="service-item">
-            <span class="service-name">Подготовка и подача заявления на Патент</span>
-            <div class="service-meta"><div class="service-price">Включено</div></div>
-          </div>
-          <div class="service-item">
-            <span class="service-name">Уведомление на уменьшение Патента</span>
-            <div class="service-meta"><div class="service-price">Включено</div></div>
-          </div>
-          <div class="service-item">
-            <span class="service-name">Сверка страховых платежей и налогов с ФНС</span>
-            <div class="service-meta"><div class="service-price">Включено</div></div>
-          </div>
+          <div class="service-item"><span class="service-name">Сдача годовой отчетности (УСН / 3-НДФЛ)</span><div class="service-meta"><div class="service-price">5 000 ₽</div></div></div>
+          <div class="service-item"><span class="service-name">Заявление на Патент</span><div class="service-meta"><div class="service-price">Включено</div></div></div>
+          <div class="service-item"><span class="service-name">Уведомление на уменьшение Патента</span><div class="service-meta"><div class="service-price">Включено</div></div></div>
         </div>
       </div>
     </div>
 
-    <!-- СЕКЦИЯ КОНТАКТОВ -->
-    <div class="contact-section" id="callback">
+    <!-- КАЛЬКУЛЯТОР -->
+    <div class="calculator-section fade-in-up" id="calc">
+      <h2 class="section-title" style="margin-bottom: 0.5rem; text-align: left;">Соберите свой тариф</h2>
+      <p style="color: var(--text-muted); margin-bottom: 2rem;">Выберите основу и добавьте необходимые опции</p>
+      
+      <div class="calc-row">
+        <label class="calc-option">
+          <div><input type="radio" name="base_plan" value="10000" checked onchange="calculateTotal()"><span class="calc-option-label">Базовое обслуживание (до 8 чел.)</span></div><span class="calc-option-price">10 000 ₽</span>
+        </label>
+        <label class="calc-option">
+          <div><input type="radio" name="base_plan" value="12000" onchange="calculateTotal()"><span class="calc-option-label">Расширенное обслуживание (от 8 чел.)</span></div><span class="calc-option-price">12 000 ₽</span>
+        </label>
+        <label class="calc-option">
+          <div><input type="radio" name="base_plan" value="5000" onchange="calculateTotal()"><span class="calc-option-label">Разовая годовая отчетность</span></div><span class="calc-option-price">5 000 ₽</span>
+        </label>
+      </div>
+      <div class="calc-row">
+        <label class="calc-option" style="background: linear-gradient(to right, #ffffff, #eff6ff); border-color: #bfdbfe;">
+          <div><input type="checkbox" id="calc_edo" value="2000" onchange="calculateTotal()"><span class="calc-option-label">Ведение ЭДО (ЭДО ЛОГИСТИК и аналоги)</span></div><span class="calc-option-price">+ 2 000 ₽</span>
+        </label>
+      </div>
+
+      <div class="calc-total-area">
+        <div class="calc-total-sum">
+          Ориентировочная стоимость:
+          <span id="total_price">10 000 ₽</span>
+        </div>
+        
+        <!-- ЕДИНСТВЕННАЯ КНОПКА СКАЧИВАНИЯ (СКАЧИВАЕТ TXT ФАЙЛ) -->
+        <button onclick="downloadKP()" class="btn" style="padding: 1rem 2rem; font-size: 1.05rem;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Скачать КП
+        </button>
+      </div>
+    </div>
+
+    <!-- КОНТАКТЫ И ФОРМА (С ВОССТАНОВЛЕННЫМ ОПИСАНИЕМ) -->
+    <div class="contact-section fade-in-up" id="callback">
       <div class="contact-card">
-        <h3>Оставить заявку</h3>
+        <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 1.5rem;">Оставить заявку</h3>
         <form action="https://api.web3forms.com/submit" method="POST">
           <input type="hidden" name="access_key" value="269b350e-f717-49d1-9479-dde5840e799d">
-          <input type="hidden" name="subject" value="Новая заявка с сайта Бизнес-БухУчет">
-          <input type="hidden" name="from_name" value="Бизнес-БухУчет">
-          <input type="checkbox" name="botcheck" style="display: none;">
+          
+          <div class="form-group">
+            <label>ФИО *</label>
+            <input type="text" name="ФИО" required placeholder="Иванов Иван Иванович">
+          </div>
+          <div class="form-group">
+            <label>Номер телефона *</label>
+            <input type="tel" name="Телефон" required placeholder="+7 (999) 000-00-00">
+          </div>
+          <div class="form-group">
+            <label>Описание вашего бизнеса (опционально)</label>
+            <textarea name="Описание_Бизнеса" rows="3" placeholder="Сфера деятельности, система налогообложения, кол-во сотрудников..."></textarea>
+          </div>
 
-          <div class="form-group">
-            <label for="name">ФИО *</label>
-            <input type="text" id="name" name="ФИО" required placeholder="Иванов Иван Иванович">
-          </div>
-          <div class="form-group">
-            <label for="phone">Номер телефона *</label>
-            <input type="tel" id="phone" name="Телефон" required placeholder="+7 (999) 000-00-00">
-          </div>
-          <div class="form-group">
-            <label for="business">Описание вашего бизнеса (опционально)</label>
-            <textarea id="business" name="Описание_Бизнеса" rows="3" placeholder="Сфера деятельности, система налогообложения, кол-во сотрудников..."></textarea>
-          </div>
-          <button type="submit" class="btn" style="width: 100%;">Отправить заявку</button>
+          <label class="legal-consent">
+            <input type="checkbox" required checked>
+            <span>Я даю согласие на обработку персональных данных. <a onclick="openPolicy()">Политика конфиденциальности</a></span>
+          </label>
+
+          <button type="submit" class="btn" style="width: 100%; padding: 1rem;">Отправить заявку</button>
         </form>
       </div>
 
-      <div class="contact-card">
-        <h3>Связаться напрямую</h3>
-        <p style="color: var(--text-muted); margin-bottom: 1rem;">Выберите удобный способ связи для консультации:</p>
-        
-        <p style="margin-bottom: 0.5rem;"><strong>Телефоны:</strong><br>+7 919 895-34-29<br>+7 992 045-80-35</p>
-        <p style="margin-bottom: 1rem;"><strong>Email:</strong><br><a href="mailto:business.buhuchet@gmail.com" style="color: var(--primary);">business.buhuchet@gmail.com</a></p>
-
+      <div class="contact-card" style="background: var(--primary); color: white;">
+        <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 1.5rem;">Связаться напрямую</h3>
+        <p style="color: #e0f2fe; margin-bottom: 2rem;">Готовы обсудить вашу задачу прямо сейчас. Выберите удобный мессенджер или позвоните.</p>
+        <p style="margin-bottom: 0.5rem; font-size: 1.2rem; font-weight: 700;">+7 919 895-34-29</p>
+        <p style="margin-bottom: 2rem; font-size: 1.2rem; font-weight: 700;">+7 992 045-80-35</p>
         <div class="messengers">
-          <a href="https://t.me/BUSINESS_BUHUCHET" target="_blank" class="messenger-btn tg-btn">
-            Telegram (@BUSINESS_BUHUCHET)
-          </a>
-          <a href="https://max.ru/u/f9LHodD0cOJgqPGanJ6AFg9camn1TcI4rklR-z0bvhie0EcOZLEEyKL9kks" target="_blank" class="messenger-btn max-btn">
-            Мессенджер МАКС
-          </a>
+          <a href="https://t.me/BUSINESS_BUHUCHET" target="_blank" class="messenger-btn tg-btn">Написать в Telegram</a>
+          <a href="https://max.ru/u/f9LHodD0cOJgqPGanJ6AFg9camn1TcI4rklR-z0bvhie0EcOZLEEyKL9kks" target="_blank" class="messenger-btn max-btn">Написать в МАКС</a>
         </div>
       </div>
     </div>
-
   </main>
 
   <footer>
-    <p><strong>Бизнес-БухУчет</strong> — Профессиональные услуги для ООО и ИП</p>
-    <p>Email: business.buhuchet@gmail.com | Домен: business-buhuchet.ru</p>
-    <p style="margin-top: 1rem; opacity: 0.7;">&copy; 2026 Бизнес-БухУчет. Все права защищены.</p>
+    <p style="font-weight: 700; color: var(--text); font-size: 1.1rem;">Бизнес-БухУчет</p>
+    <p>Профессиональные услуги для ООО и ИП</p>
+    <p style="margin-top: 2rem; font-size: 0.8rem;">&copy; 2026 Все права защищены. <br><a onclick="openPolicy()" style="cursor:pointer; text-decoration:underline;">Политика конфиденциальности</a></p>
   </footer>
 
+  <div class="modal-overlay" id="policyModal"><div class="modal-content"><button class="modal-close" onclick="closePolicy()">&times;</button><h2 style="margin-bottom: 1rem; font-size: 1.2rem;">Политика конфиденциальности</h2><p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">Настоящая Политика действует в отношении всей информации, которую сайт «Бизнес-БухУчет» может получить о Пользователе.</p><p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;"><strong>1. Сбор данных:</strong> Мы собираем только те данные (Имя, Телефон), которые Пользователь предоставляет добровольно.</p><p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;"><strong>2. Цель:</strong> Данные нужны для связи и расчета стоимости услуг.</p><p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;"><strong>3. Защита:</strong> Мы гарантируем защиту данных в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных».</p></div></div>
+  <div class="cookie-banner" id="cookieBanner"><p style="font-size: 0.9rem;">Мы используем файлы cookie для улучшения работы сайта. <a onclick="openPolicy()" style="cursor:pointer; color: #93c5fd;">Узнать больше</a>.</p><button class="cookie-btn" onclick="acceptCookies()">Хорошо</button></div>
+
   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } }); }, { threshold: 0.1 });
+      document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
+    });
+
     function switchTab(event, tabId) {
-      document.querySelectorAll('.tab-content').forEach(content => {
-        content.classList.remove('active');
-      });
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       document.getElementById(tabId).classList.add('active');
       event.currentTarget.classList.add('active');
     }
+
+    function calculateTotal() {
+      const base = parseInt(document.querySelector('input[name="base_plan"]:checked').value);
+      const edo = document.getElementById('calc_edo').checked ? 2000 : 0;
+      document.getElementById('total_price').innerText = (base + edo).toLocaleString('ru-RU') + ' ₽';
+    }
+
+    // --- СКАЧИВАНИЕ В ТЕКСТОВОМ ФОРМАТЕ (БЕЗОТКАЗНО И НАДЕЖНО) ---
+    function downloadKP() {
+      const baseName = document.querySelector('input[name="base_plan"]:checked').nextElementSibling.innerText;
+      const basePrice = parseInt(document.querySelector('input[name="base_plan"]:checked').value);
+      const edo = document.getElementById('calc_edo').checked;
+      const edoPrice = edo ? 2000 : 0;
+      const total = basePrice + edoPrice;
+      const date = new Date().toLocaleDateString('ru-RU');
+      
+      let text = "=================================================\n";
+      text += "             КОММЕРЧЕСКОЕ ПРЕДЛОЖЕНИЕ            \n";
+      text += "                  Бизнес-БухУчет                 \n";
+      text += "=================================================\n\n";
+      
+      text += "ПРЕДВАРИТЕЛЬНЫЙ РАСЧЕТ:\n";
+      text += `1. Основной тариф: ${baseName} — ${basePrice.toLocaleString('ru-RU')} руб/мес.\n`;
+      if (edo) {
+        text += `2. Дополнительная опция: Ведение ЭДО — ${edoPrice.toLocaleString('ru-RU')} руб/мес.\n`;
+      }
+      text += `\nИТОГОВАЯ СТОИМОСТЬ: ${total.toLocaleString('ru-RU')} руб/мес.\n\n`;
+      
+      text += "ЧТО ВХОДИТ В БАЗОВОЕ ОБСЛУЖИВАНИЕ:\n";
+      text += "- Комплексный кадровый учет (прием, увольнение, приказы, трудовые книжки)\n";
+      text += "- Полный расчет заработной платы, отпускных и больничных\n";
+      text += "- Подготовка и сдача отчетности (СФР, ФНС) без просрочек и штрафов\n";
+      text += "- Ведение зарплатного проекта (обмен данными с банком)\n";
+      text += "- Регулярная сверка расчетов с бюджетом по налогам\n\n";
+      
+      text += "КОНТАКТЫ ДЛЯ СВЯЗИ:\n";
+      text += "Телефон: +7 919 895-34-29, +7 992 045-80-35\n";
+      text += "Сайт: business-buhuchet.ru\n\n";
+      
+      text += "Данный документ носит информационный характер и не является публичной офертой.\n";
+      text += `Дата формирования расчета: ${date}\n`;
+      
+      const blob = new Blob([text], {type: "text/plain;charset=utf-8"});
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "Коммерческое_предложение_Бизнес_БухУчет.txt";
+      link.click();
+      URL.revokeObjectURL(link.href);
+    }
+
+    function openPolicy() { document.getElementById('policyModal').classList.add('active'); }
+    function closePolicy() { document.getElementById('policyModal').classList.remove('active'); }
+    function acceptCookies() { localStorage.setItem('cookiesOk', 'true'); document.getElementById('cookieBanner').classList.remove('show'); }
+
+    window.onload = function() {
+      calculateTotal();
+      if (!localStorage.getItem('cookiesOk')) { setTimeout(() => document.getElementById('cookieBanner').classList.add('show'), 1500); }
+    };
   </script>
 </body>
 </html>
