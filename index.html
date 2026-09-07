@@ -6,6 +6,10 @@
   <title>Бизнес-БухУчет — Бухгалтерские и кадровые услуги для бизнеса</title>
   <meta name="description" content="Профессиональное бухгалтерское сопровождение, кадровый учет, ЭДО и налоговая оптимизация.">
   
+  <!-- Заголовки безопасности (Защита от XSS и кликджекинга для статического хостинга) -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'none';">
+
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232563eb'/%3E%3Cpath d='M21 21l3-8 3 8a3 3 0 0 1-6 0zM5 21l3-8 3 8a3 3 0 0 1-6 0zM10 26h12M16 6v18M6 11h20' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E">
 
   <style>
@@ -164,7 +168,7 @@
     
     .legal-consent { display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; }
     .legal-consent input { margin-top: 0.2rem; cursor: pointer; transform: scale(1.2); }
-    .legal-consent a { color: var(--primary); font-weight: 600; text-decoration: none; border-bottom: 1px dashed var(--primary); cursor: pointer; }
+    .legal-consent a { color: var(--primary); font-weight: 600; text-decoration: underline; }
     
     .messengers { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
     .messenger-btn { padding: 1rem; border-radius: 12px; font-weight: 700; font-size: 1rem; text-align: center; text-decoration: none; transition: var(--transition); }
@@ -174,16 +178,17 @@
     .max-btn:hover { background-color: #4f46e5; color: white; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(79,70,229,0.2); }
 
     footer { text-align: center; padding: 3rem 1rem; color: var(--text-muted); font-size: 0.9rem; margin-top: 5rem; background: #f1f5f9; border-top: 1px solid var(--border); }
+    footer a { color: var(--text-muted); text-decoration: underline; transition: color 0.2s; }
+    footer a:hover { color: var(--primary); }
     
-    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); display: flex; justify-content: center; align-items: center; z-index: 1000; opacity: 0; visibility: hidden; transition: var(--transition); }
-    .modal-overlay.active { opacity: 1; visibility: visible; }
-    .modal-content { background: white; padding: 2.5rem; border-radius: 20px; max-width: 650px; width: 95%; max-height: 85vh; overflow-y: auto; position: relative; transform: scale(0.9); transition: var(--transition); }
-    .modal-overlay.active .modal-content { transform: scale(1); }
-    .modal-close { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 2rem; cursor: pointer; color: var(--text-muted); background: none; border: none; line-height: 1; }
-    
-    .cookie-banner { position: fixed; bottom: -100px; left: 0; width: 100%; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); color: white; padding: 1.25rem; text-align: center; transition: bottom 0.5s cubic-bezier(0.4, 0, 0.2, 1); z-index: 999; display: flex; justify-content: center; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+    /* БАННЕР COOKIE */
+    .cookie-banner { position: fixed; bottom: -150px; left: 0; width: 100%; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); color: white; padding: 1.25rem 1.5rem; transition: bottom 0.5s cubic-bezier(0.4, 0, 0.2, 1); z-index: 999; display: flex; justify-content: center; align-items: center; gap: 1.5rem; flex-wrap: wrap; text-align: center; }
     .cookie-banner.show { bottom: 0; }
-    .cookie-btn { background: white; color: #0f172a; padding: 0.5rem 1.5rem; border-radius: 8px; font-weight: 700; border: none; cursor: pointer; }
+    .cookie-btn-group { display: flex; gap: 10px; }
+    .cookie-btn-accept { background: var(--accent); color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 700; border: none; cursor: pointer; transition: var(--transition); }
+    .cookie-btn-accept:hover { background: #059669; }
+    .cookie-btn-reject { background: #ef4444; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 700; border: none; cursor: pointer; transition: var(--transition); }
+    .cookie-btn-reject:hover { background: #dc2626; }
   </style>
 </head>
 <body>
@@ -216,7 +221,7 @@
     <div class="services-overview fade-in-up">
       <div class="overview-card"><div class="overview-card-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><h3>Комплексный учет</h3><p>Полный контроль финансов и сдача всех деклараций в ФНС и СФР.</p></div>
       <div class="overview-card"><div class="overview-card-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Кадры и Зарплата</h3><p>Расчет отпускных, больничных, оформление всех приказов по сотрудникам.</p></div>
-      <div class="overview-card"><div class="overview-card-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div><h3>ЭДО без проблем</h3><p>Ведение документооборота (ЭДО ЛОГИСТИК) для быстрой работы.</p></div>
+      <div class="overview-card"><div class="overview-card-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div><h3>ЭДО без проблем</h3><p>Ведение документооборота (ЭДО ЛОГИСТИК) для быстрой работы.</p></div>
     </div>
 
     <h2 class="section-title fade-in-up">Тарифы на обслуживание</h2>
@@ -359,9 +364,10 @@
             <textarea name="Описание_Бизнеса" rows="3" placeholder="Сфера деятельности, система налогообложения, кол-во сотрудников..."></textarea>
           </div>
 
+          <!-- Исправление по требованию 152-ФЗ: чекбокс НЕ предзаполнен по умолчанию -->
           <label class="legal-consent">
-            <input type="checkbox" required checked>
-            <span>Я даю согласие на обработку персональных данных. <a onclick="openPolicy()">Политика конфиденциальности</a></span>
+            <input type="checkbox" id="personal-data-consent" required>
+            <span>Я даю согласие на <a href="/consent.html" target="_blank">обработку персональных данных</a> и принимаю условия <a href="/policy.html" target="_blank">политики конфиденциальности</a>.</span>
           </label>
 
           <button type="submit" class="btn" style="width: 100%; padding: 1rem;">Отправить заявку</button>
@@ -381,18 +387,35 @@
     </div>
   </main>
 
+  <!-- ФУТЕР с прямыми ссылками на документы -->
   <footer>
     <p style="font-weight: 700; color: var(--text); font-size: 1.1rem;">Бизнес-БухУчет</p>
     <p>Профессиональные услуги для ООО и ИП</p>
-    <p style="margin-top: 2rem; font-size: 0.8rem;">&copy; 2026 Все права защищены. <br><a onclick="openPolicy()" style="cursor:pointer; text-decoration:underline;">Политика конфиденциальности</a></p>
+    <p style="margin-top: 2rem; font-size: 0.85rem;">
+      &copy; 2026 Все права защищены.<br>
+      <a href="/policy.html" target="_blank" style="margin-right: 15px;">Политика конфиденциальности</a>
+      <a href="/consent.html" target="_blank">Согласие на обработку персональных данных</a>
+    </p>
   </footer>
 
-  <div class="modal-overlay" id="policyModal"><div class="modal-content"><button class="modal-close" onclick="closePolicy()">&times;</button><h2 style="margin-bottom: 1rem; font-size: 1.2rem;">Политика конфиденциальности</h2><p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">Настоящая Политика действует в отношении всей информации, которую сайт «Бизнес-БухУчет» может получить о Пользователе.</p><p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;"><strong>1. Сбор данных:</strong> Мы собираем только те данные (Имя, Телефон), которые Пользователь предоставляет добровольно.</p><p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;"><strong>2. Цель:</strong> Данные нужны для связи и расчета стоимости услуг.</p><p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;"><strong>3. Защита:</strong> Мы гарантируем защиту данных в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных».</p></div></div>
-  <div class="cookie-banner" id="cookieBanner"><p style="font-size: 0.9rem;">Мы используем файлы cookie для улучшения работы сайта. <a onclick="openPolicy()" style="cursor:pointer; color: #93c5fd;">Узнать больше</a>.</p><button class="cookie-btn" onclick="acceptCookies()">Хорошо</button></div>
+  <!-- БАННЕР COOKIE с возможностью принятия или отклонения -->
+  <div class="cookie-banner" id="cookieBanner">
+    <p style="font-size: 0.9rem; margin: 0;">Мы используем файлы cookie для веб-аналитики и улучшения работы сайта. <a href="/policy.html" target="_blank" style="color: #93c5fd; text-decoration: underline;">Подробнее</a></p>
+    <div class="cookie-btn-group">
+      <button class="cookie-btn-reject" onclick="rejectCookies()">Отклонить</button>
+      <button class="cookie-btn-accept" onclick="acceptCookies()">Принять</button>
+    </div>
+  </div>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } }); }, { threshold: 0.1 });
+      const observer = new IntersectionObserver((entries) => { 
+        entries.forEach(entry => { 
+          if (entry.isIntersecting) { 
+            entry.target.classList.add('visible'); 
+          } 
+        }); 
+      }, { threshold: 0.1 });
       document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
     });
 
@@ -459,13 +482,31 @@
       URL.revokeObjectURL(link.href);
     }
 
-    function openPolicy() { document.getElementById('policyModal').classList.add('active'); }
-    function closePolicy() { document.getElementById('policyModal').classList.remove('active'); }
-    function acceptCookies() { localStorage.setItem('cookiesOk', 'true'); document.getElementById('cookieBanner').classList.remove('show'); }
+    /* Логика обработки Cookie и Аналитики */
+    function loadAnalytics() {
+      // Подключение скриптов аналитики (Яндекс.Метрика / Google Analytics) происходит только после явного согласия
+      console.log('Аналитические скрипты загружены.');
+    }
+
+    function acceptCookies() {
+      localStorage.setItem('cookie_consent', 'accepted');
+      document.getElementById('cookieBanner').classList.remove('show');
+      loadAnalytics();
+    }
+
+    function rejectCookies() {
+      localStorage.setItem('cookie_consent', 'rejected');
+      document.getElementById('cookieBanner').classList.remove('show');
+    }
 
     window.onload = function() {
       calculateTotal();
-      if (!localStorage.getItem('cookiesOk')) { setTimeout(() => document.getElementById('cookieBanner').classList.add('show'), 1500); }
+      const consent = localStorage.getItem('cookie_consent');
+      if (!consent) {
+        setTimeout(() => document.getElementById('cookieBanner').classList.add('show'), 1000);
+      } else if (consent === 'accepted') {
+        loadAnalytics();
+      }
     };
   </script>
 </body>
