@@ -6,7 +6,6 @@
   <title>Бизнес-БухУчет — Бухгалтерские и кадровые услуги для бизнеса</title>
   <meta name="description" content="Профессиональное бухгалтерское сопровождение, кадровый учет, ЭДО и налоговая оптимизация.">
   
-  <!-- Заголовки безопасности (Защита от XSS и кликджекинга для статического хостинга) -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'none';">
 
@@ -39,29 +38,17 @@
       background-size: 400% 400%; animation: gradientBG 15s ease infinite;
       border-bottom: 1px solid var(--border); padding-bottom: 4rem;
     }
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; }
-    }
+    @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
-    header {
-      background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px);
-      padding: 1rem 1.5rem; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.02);
-    }
+    header { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); padding: 1rem 1.5rem; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
     .header-container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
     .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text); transition: transform 0.3s; }
     .logo:hover { transform: scale(1.02); }
-    .logo-icon {
-      width: 42px; height: 42px; background: linear-gradient(135deg, var(--primary), var(--secondary));
-      border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
-    }
+    .logo-icon { width: 42px; height: 42px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3); }
     .logo-text { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; }
     .logo-text span { color: var(--primary); }
 
-    .btn {
-      background-color: var(--primary); color: white; padding: 0.7rem 1.5rem; border-radius: 10px;
-      text-decoration: none; font-weight: 600; font-size: 0.95rem; border: none; cursor: pointer;
-      transition: var(--transition); display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
-    }
+    .btn { background-color: var(--primary); color: white; padding: 0.7rem 1.5rem; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 0.95rem; border: none; cursor: pointer; transition: var(--transition); display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2); }
     .btn:hover { background-color: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35); }
 
     .hero { text-align: center; padding: 4rem 1rem 0; max-width: 800px; margin: 0 auto; }
@@ -71,71 +58,42 @@
 
     .container { max-width: 1100px; margin: -2rem auto 0; padding: 0 1rem 2rem; position: relative; z-index: 10; }
 
-    /* КАРТОЧКИ УСЛУГ */
     .services-overview { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 4rem; }
-    .overview-card {
-      background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 2rem 1.5rem; transition: var(--transition); box-shadow: 0 4px 15px rgba(0,0,0,0.02); text-align: center;
-    }
+    .overview-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem 1.5rem; transition: var(--transition); box-shadow: 0 4px 15px rgba(0,0,0,0.02); text-align: center; }
     .overview-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); border-color: #bfdbfe; }
     .overview-card-icon { width: 50px; height: 50px; background: #eff6ff; color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
     .overview-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; font-weight: 700; }
     .overview-card p { font-size: 0.95rem; color: var(--text-muted); }
 
-    /* ТАРИФЫ */
     .section-title { text-align: center; font-size: 2rem; font-weight: 900; margin-bottom: 1.5rem; }
     .tabs { display: flex; justify-content: center; gap: 0.75rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
-    .tab-btn {
-      padding: 0.75rem 1.5rem; border: 2px solid transparent; background: var(--card-bg); border-radius: 12px;
-      cursor: pointer; font-weight: 600; font-size: 1rem; color: var(--text-muted); transition: var(--transition); box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-    }
+    .tab-btn { padding: 0.75rem 1.5rem; border: 2px solid transparent; background: var(--card-bg); border-radius: 12px; cursor: pointer; font-weight: 600; font-size: 1rem; color: var(--text-muted); transition: var(--transition); box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
     .tab-btn:hover { color: var(--primary); }
     .tab-btn.active { background: var(--primary); color: white; box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25); }
-
     .tab-content { display: none; animation: fadeIn 0.4s ease; }
     .tab-content.active { display: block; }
     @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
 
-    .pricing-card {
-      background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px;
-      padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.04); margin-bottom: 2rem; transition: var(--transition);
-    }
+    .pricing-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.04); margin-bottom: 2rem; transition: var(--transition); }
     .pricing-card:hover { box-shadow: 0 15px 40px rgba(0,0,0,0.08); }
     .card-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px dashed var(--border); padding-bottom: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
     .card-title { font-size: 1.5rem; font-weight: 800; }
     .card-price { font-size: 2rem; font-weight: 900; color: var(--primary); }
     .card-price span { font-size: 1rem; font-weight: 500; color: var(--text-muted); }
 
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 0.75rem;
-    }
-    .service-item {
-      background: #f8fafc; padding: 1rem; border-radius: 12px; display: flex; justify-content: space-between;
-      align-items: center; gap: 0.5rem; transition: var(--transition); border: 1px solid transparent;
-    }
+    .service-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.75rem; }
+    .service-item { background: #f8fafc; padding: 1rem; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; transition: var(--transition); border: 1px solid transparent; }
     .service-item:hover { background: #fff; border-color: #bfdbfe; transform: scale(1.02); }
     .service-item.addon { background: linear-gradient(135deg, #eff6ff, #e0f2fe); border: 1px solid #bfdbfe; }
-    
     .service-name { font-size: 0.85rem; font-weight: 600; color: #1e293b; line-height: 1.3; flex: 1; padding-right: 5px; }
     .service-meta { text-align: right; white-space: nowrap; flex-shrink: 0; } 
     .service-price { font-weight: 800; color: var(--accent); font-size: 0.95rem; white-space: nowrap; }
     .service-item.addon .service-price { color: var(--primary); }
 
-    /* КАЛЬКУЛЯТОР */
-    .calculator-section {
-      background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px;
-      padding: 3rem 2rem; margin-top: 4rem; box-shadow: 0 10px 40px rgba(0,0,0,0.05); position: relative; overflow: hidden;
-    }
-    .calculator-section::before {
-      content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, var(--primary), var(--secondary));
-    }
+    .calculator-section { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 3rem 2rem; margin-top: 4rem; box-shadow: 0 10px 40px rgba(0,0,0,0.05); position: relative; overflow: hidden; }
+    .calculator-section::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, var(--primary), var(--secondary)); }
     .calc-row { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
-    .calc-option {
-      display: flex; justify-content: space-between; align-items: center; padding: 1.25rem;
-      border: 2px solid var(--border); border-radius: 12px; cursor: pointer; transition: var(--transition); background: #fff;
-    }
+    .calc-option { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem; border: 2px solid var(--border); border-radius: 12px; cursor: pointer; transition: var(--transition); background: #fff; }
     .calc-option:hover { border-color: var(--primary); background: #f8fafc; }
     .calc-option input { appearance: none; width: 22px; height: 22px; margin-right: 1rem; border: 2px solid var(--border); border-radius: 50%; outline: none; cursor: pointer; transition: 0.2s; position: relative; top: 5px; }
     .calc-option input[type="checkbox"] { border-radius: 6px; }
@@ -145,30 +103,21 @@
     .calc-option-label { flex-grow: 1; font-weight: 600; font-size: 1rem; }
     .calc-option-price { font-weight: 800; color: var(--primary); font-size: 1.05rem; white-space: nowrap; }
 
-    .calc-total-area {
-      background: #f8fafc; border-radius: 16px; padding: 2rem; display: flex; justify-content: space-between;
-      align-items: center; flex-wrap: wrap; gap: 1.5rem; border: 1px solid var(--border);
-    }
+    .calc-total-area { background: #f8fafc; border-radius: 16px; padding: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; border: 1px solid var(--border); }
     .calc-total-sum { font-size: 1rem; color: var(--text-muted); font-weight: 500;}
     .calc-total-sum span { font-size: 2.2rem; font-weight: 900; color: var(--text); display: block; line-height: 1.2; }
 
-    /* ФОРМА И КОНТАКТЫ */
     .contact-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; margin-top: 4rem; }
     .contact-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
     
     .form-group { margin-bottom: 1.25rem; }
     .form-group label { display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .form-group input, .form-group textarea { 
-      width: 100%; padding: 0.8rem 1rem; border: 2px solid var(--border); 
-      border-radius: 10px; font-size: 1rem; transition: var(--transition); background: #f8fafc; 
-    }
-    .form-group input:focus, .form-group textarea:focus { 
-      border-color: var(--primary); background: #fff; outline: none; box-shadow: 0 0 0 4px rgba(37,99,235,0.1); 
-    }
+    .form-group input, .form-group textarea { width: 100%; padding: 0.8rem 1rem; border: 2px solid var(--border); border-radius: 10px; font-size: 1rem; transition: var(--transition); background: #f8fafc; }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--primary); background: #fff; outline: none; box-shadow: 0 0 0 4px rgba(37,99,235,0.1); }
     
     .legal-consent { display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; }
     .legal-consent input { margin-top: 0.2rem; cursor: pointer; transform: scale(1.2); }
-    .legal-consent a { color: var(--primary); font-weight: 600; text-decoration: underline; }
+    .legal-consent a { color: var(--primary); font-weight: 600; text-decoration: underline; cursor: pointer; }
     
     .messengers { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
     .messenger-btn { padding: 1rem; border-radius: 12px; font-weight: 700; font-size: 1rem; text-align: center; text-decoration: none; transition: var(--transition); }
@@ -178,17 +127,27 @@
     .max-btn:hover { background-color: #4f46e5; color: white; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(79,70,229,0.2); }
 
     footer { text-align: center; padding: 3rem 1rem; color: var(--text-muted); font-size: 0.9rem; margin-top: 5rem; background: #f1f5f9; border-top: 1px solid var(--border); }
-    footer a { color: var(--text-muted); text-decoration: underline; transition: color 0.2s; }
+    footer a { color: var(--text-muted); text-decoration: underline; transition: color 0.2s; cursor: pointer; }
     footer a:hover { color: var(--primary); }
     
-    /* БАННЕР COOKIE */
-    .cookie-banner { position: fixed; bottom: -150px; left: 0; width: 100%; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); color: white; padding: 1.25rem 1.5rem; transition: bottom 0.5s cubic-bezier(0.4, 0, 0.2, 1); z-index: 999; display: flex; justify-content: center; align-items: center; gap: 1.5rem; flex-wrap: wrap; text-align: center; }
+    .cookie-banner { position: fixed; bottom: -150px; left: 0; width: 100%; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); color: white; padding: 1.25rem 1.5rem; transition: bottom 0.5s cubic-bezier(0.4, 0, 0.2, 1); z-index: 990; display: flex; justify-content: center; align-items: center; gap: 1.5rem; flex-wrap: wrap; text-align: center; }
     .cookie-banner.show { bottom: 0; }
     .cookie-btn-group { display: flex; gap: 10px; }
     .cookie-btn-accept { background: var(--accent); color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 700; border: none; cursor: pointer; transition: var(--transition); }
     .cookie-btn-accept:hover { background: #059669; }
     .cookie-btn-reject { background: #ef4444; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 700; border: none; cursor: pointer; transition: var(--transition); }
     .cookie-btn-reject:hover { background: #dc2626; }
+
+    /* СТИЛИ МОДАЛЬНЫХ ОКОН */
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); z-index: 1000; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: 0.3s ease; padding: 1rem; }
+    .modal-overlay.active { opacity: 1; visibility: visible; }
+    .modal-content { background: #fff; border-radius: 20px; width: 100%; max-width: 600px; max-height: 85vh; overflow-y: auto; padding: 2.5rem; position: relative; transform: translateY(20px); transition: 0.3s ease; }
+    .modal-overlay.active .modal-content { transform: translateY(0); }
+    .modal-close { position: absolute; top: 1rem; right: 1rem; background: #f1f5f9; border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s; color: #64748b; }
+    .modal-close:hover { background: #e2e8f0; color: #0f172a; }
+    .modal-title { font-size: 1.3rem; font-weight: 800; margin-bottom: 1.5rem; padding-right: 2rem; color: #0f172a; }
+    .modal-text { font-size: 0.95rem; color: #475569; line-height: 1.6; }
+    .modal-text h4 { margin: 1.5rem 0 0.5rem; color: #0f172a; font-size: 1.05rem; }
   </style>
 </head>
 <body>
@@ -232,111 +191,68 @@
       <button class="tab-btn" onclick="switchTab(event, 'annual')">Годовая отчетность</button>
     </div>
 
-    <!-- ТАРИФ ПРОСТОЙ -->
     <div id="simple" class="tab-content active fade-in-up">
       <div class="pricing-card">
         <div class="card-header">
-          <div class="card-title">
-            Тариф «Простой»
-            <span style="font-size: 1rem; color: var(--text-muted); display: block; font-weight: 500; margin-top: 5px;">Базовое сопровождение для индивидуальных предпринимателей</span>
-          </div>
+          <div class="card-title">Тариф «Простой»<span style="font-size: 1rem; color: var(--text-muted); display: block; font-weight: 500; margin-top: 5px;">Базовое сопровождение для ИП</span></div>
           <div class="card-price">1 000 ₽ <span>/ месяц</span></div>
         </div>
         <div class="service-grid">
           <div class="service-item"><span class="service-name">Консультирование по вопросам бухгалтерии и ведения бизнеса</span><div class="service-meta"><div class="service-price">Включено</div></div></div>
           <div class="service-item"><span class="service-name">Подготовка и проведение платежных поручений</span><div class="service-meta"><div class="service-price">до 15 шт/мес</div></div></div>
-          <div class="service-item"><span class="service-name">Персональное консультирование по вопросам деятельности вашего ИП</span><div class="service-meta"><div class="service-price">Включено</div></div></div>
-          <div class="service-item addon" style="grid-column: 1 / -1;"><span class="service-name">🎁 <b>Особый бонус:</b> Бесплатная подготовка и сдача декларации УСН или Патента</span><div class="service-meta"><div class="service-price">При оплате от 5 мес.</div></div></div>
+          <div class="service-item addon" style="grid-column: 1 / -1;"><span class="service-name">🎁 <b>Особый бонус:</b> Бесплатная подготовка декларации УСН или Патента</span><div class="service-meta"><div class="service-price">При оплате от 5 мес.</div></div></div>
         </div>
       </div>
     </div>
 
-    <!-- ТАРИФ 1 -->
     <div id="small" class="tab-content fade-in-up">
       <div class="pricing-card">
-        <div class="card-header">
-          <div class="card-title">ИП / ООО (до 8 человек)</div>
-          <div class="card-price">10 000 ₽ <span>/ месяц</span></div>
-        </div>
+        <div class="card-header"><div class="card-title">ИП / ООО (до 8 человек)</div><div class="card-price">10 000 ₽ <span>/ месяц</span></div></div>
         <div class="service-grid">
           <div class="service-item addon"><span class="service-name">Ведение ЭДО (ЭДО ЛОГИСТИК)</span><div class="service-meta"><div class="service-price">+ 2 000 ₽</div></div></div>
           <div class="service-item"><span class="service-name">Кадровое оформление (приказы, ТК)</span><div class="service-meta"><div class="service-price">500 ₽</div></div></div>
-          <div class="service-item"><span class="service-name">Отчетность в СФР (ЕФС-1)</span><div class="service-meta"><div class="service-price">500 ₽</div></div></div>
-          <div class="service-item"><span class="service-name">Выдача справок (2-НДФЛ)</span><div class="service-meta"><div class="service-price">500 ₽</div></div></div>
-          <div class="service-item"><span class="service-name">Табельный учет времени</span><div class="service-meta"><div class="service-price">500 ₽</div></div></div>
-          <div class="service-item"><span class="service-name">Расчетно-платежные ведомости</span><div class="service-meta"><div class="service-price">500 ₽</div></div></div>
-          <div class="service-item"><span class="service-name">Ведение зарплатного проекта</span><div class="service-meta"><div class="service-price">1 000 ₽</div></div></div>
           <div class="service-item"><span class="service-name">Квартальная отчетность (РСВ, 6-НДФЛ)</span><div class="service-meta"><div class="service-price">3 500 ₽</div></div></div>
         </div>
       </div>
     </div>
 
-    <!-- ТАРИФ 2 -->
     <div id="large" class="tab-content fade-in-up">
       <div class="pricing-card">
-        <div class="card-header">
-          <div class="card-title">ИП / ООО (от 8 человек)</div>
-          <div class="card-price">12 000 ₽ <span>/ месяц</span></div>
-        </div>
+        <div class="card-header"><div class="card-title">ИП / ООО (от 8 человек)</div><div class="card-price">12 000 ₽ <span>/ месяц</span></div></div>
         <div class="service-grid">
           <div class="service-item addon"><span class="service-name">Ведение ЭДО (ЭДО ЛОГИСТИК)</span><div class="service-meta"><div class="service-price">+ 2 000 ₽</div></div></div>
           <div class="service-item"><span class="service-name">Кадровое оформление (приказы, ТК)</span><div class="service-meta"><div class="service-price">600 ₽</div></div></div>
-          <div class="service-item"><span class="service-name">Отчетность в СФР (ЕФС-1)</span><div class="service-meta"><div class="service-price">600 ₽</div></div></div>
-          <div class="service-item"><span class="service-name">Выдача справок (2-НДФЛ)</span><div class="service-meta"><div class="service-price">600 ₽</div></div></div>
-          <div class="service-item"><span class="service-name">Табельный учет времени</span><div class="service-meta"><div class="service-price">600 ₽</div></div></div>
-          <div class="service-item"><span class="service-name">Расчетно-платежные ведомости</span><div class="service-meta"><div class="service-price">600 ₽</div></div></div>
-          <div class="service-item"><span class="service-name">Ведение зарплатного проекта</span><div class="service-meta"><div class="service-price">1 200 ₽</div></div></div>
           <div class="service-item"><span class="service-name">Квартальная отчетность (РСВ, 6-НДФЛ)</span><div class="service-meta"><div class="service-price">4 200 ₽</div></div></div>
         </div>
       </div>
     </div>
 
-    <!-- ТАРИФ 3 -->
     <div id="annual" class="tab-content fade-in-up">
       <div class="pricing-card">
-        <div class="card-header">
-          <div class="card-title">Годовая отчетность и Патент</div>
-          <div class="card-price">5 000 ₽ <span>/ под ключ</span></div>
-        </div>
+        <div class="card-header"><div class="card-title">Годовая отчетность и Патент</div><div class="card-price">5 000 ₽ <span>/ под ключ</span></div></div>
         <div class="service-grid">
           <div class="service-item"><span class="service-name">Сдача годовой отчетности (УСН / 3-НДФЛ)</span><div class="service-meta"><div class="service-price">5 000 ₽</div></div></div>
           <div class="service-item"><span class="service-name">Заявление на Патент</span><div class="service-meta"><div class="service-price">Включено</div></div></div>
-          <div class="service-item"><span class="service-name">Уведомление на уменьшение Патента</span><div class="service-meta"><div class="service-price">Включено</div></div></div>
         </div>
       </div>
     </div>
 
-    <!-- КАЛЬКУЛЯТОР -->
     <div class="calculator-section fade-in-up" id="calc">
       <h2 class="section-title" style="margin-bottom: 0.5rem; text-align: left;">Соберите свой тариф</h2>
       <p style="color: var(--text-muted); margin-bottom: 2rem;">Выберите основу и добавьте необходимые опции</p>
-      
       <div class="calc-row">
-        <label class="calc-option">
-          <div><input type="radio" name="base_plan" value="1000" onchange="calculateTotal()"><span class="calc-option-label">Тариф «Простой» (Консультации и платежи)</span></div><span class="calc-option-price">1 000 ₽</span>
-        </label>
-        <label class="calc-option">
-          <div><input type="radio" name="base_plan" value="10000" checked onchange="calculateTotal()"><span class="calc-option-label">Базовое обслуживание (до 8 чел.)</span></div><span class="calc-option-price">10 000 ₽</span>
-        </label>
-        <label class="calc-option">
-          <div><input type="radio" name="base_plan" value="12000" onchange="calculateTotal()"><span class="calc-option-label">Расширенное обслуживание (от 8 чел.)</span></div><span class="calc-option-price">12 000 ₽</span>
-        </label>
-        <label class="calc-option">
-          <div><input type="radio" name="base_plan" value="5000" onchange="calculateTotal()"><span class="calc-option-label">Разовая годовая отчетность</span></div><span class="calc-option-price">5 000 ₽</span>
-        </label>
+        <label class="calc-option"><div><input type="radio" name="base_plan" value="1000" onchange="calculateTotal()"><span class="calc-option-label">Тариф «Простой» (Консультации и платежи)</span></div><span class="calc-option-price">1 000 ₽</span></label>
+        <label class="calc-option"><div><input type="radio" name="base_plan" value="10000" checked onchange="calculateTotal()"><span class="calc-option-label">Базовое обслуживание (до 8 чел.)</span></div><span class="calc-option-price">10 000 ₽</span></label>
+        <label class="calc-option"><div><input type="radio" name="base_plan" value="12000" onchange="calculateTotal()"><span class="calc-option-label">Расширенное обслуживание (от 8 чел.)</span></div><span class="calc-option-price">12 000 ₽</span></label>
+        <label class="calc-option"><div><input type="radio" name="base_plan" value="5000" onchange="calculateTotal()"><span class="calc-option-label">Разовая годовая отчетность</span></div><span class="calc-option-price">5 000 ₽</span></label>
       </div>
       <div class="calc-row">
         <label class="calc-option" style="background: linear-gradient(to right, #ffffff, #eff6ff); border-color: #bfdbfe;">
           <div><input type="checkbox" id="calc_edo" value="2000" onchange="calculateTotal()"><span class="calc-option-label">Ведение ЭДО (ЭДО ЛОГИСТИК и аналоги)</span></div><span class="calc-option-price">+ 2 000 ₽</span>
         </label>
       </div>
-
       <div class="calc-total-area">
-        <div class="calc-total-sum">
-          Ориентировочная стоимость:
-          <span id="total_price">10 000 ₽</span>
-        </div>
-        
+        <div class="calc-total-sum">Ориентировочная стоимость:<span id="total_price">10 000 ₽</span></div>
         <button onclick="downloadKP()" class="btn" style="padding: 1rem 2rem; font-size: 1.05rem;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
           Скачать КП
@@ -344,30 +260,18 @@
       </div>
     </div>
 
-    <!-- КОНТАКТЫ И ФОРМА -->
     <div class="contact-section fade-in-up" id="callback">
       <div class="contact-card">
         <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 1.5rem;">Оставить заявку</h3>
         <form action="https://api.web3forms.com/submit" method="POST">
           <input type="hidden" name="access_key" value="269b350e-f717-49d1-9479-dde5840e799d">
-          
-          <div class="form-group">
-            <label>ФИО *</label>
-            <input type="text" name="ФИО" required placeholder="Иванов Иван Иванович">
-          </div>
-          <div class="form-group">
-            <label>Номер телефона *</label>
-            <input type="tel" name="Телефон" required placeholder="+7 (999) 000-00-00">
-          </div>
-          <div class="form-group">
-            <label>Описание вашего бизнеса (опционально)</label>
-            <textarea name="Описание_Бизнеса" rows="3" placeholder="Сфера деятельности, система налогообложения, кол-во сотрудников..."></textarea>
-          </div>
+          <div class="form-group"><label>ФИО *</label><input type="text" name="ФИО" required placeholder="Иванов Иван Иванович"></div>
+          <div class="form-group"><label>Номер телефона *</label><input type="tel" name="Телефон" required placeholder="+7 (999) 000-00-00"></div>
+          <div class="form-group"><label>Описание вашего бизнеса (опционально)</label><textarea name="Описание_Бизнеса" rows="3" placeholder="Сфера деятельности, система налогообложения..."></textarea></div>
 
-          <!-- Исправление по требованию 152-ФЗ: чекбокс НЕ предзаполнен по умолчанию -->
           <label class="legal-consent">
             <input type="checkbox" id="personal-data-consent" required>
-            <span>Я даю согласие на <a href="/consent.html" target="_blank">обработку персональных данных</a> и принимаю условия <a href="/policy.html" target="_blank">политики конфиденциальности</a>.</span>
+            <span>Я даю согласие на <a onclick="openModal(event, 'consentModal')">обработку персональных данных</a> и принимаю условия <a onclick="openModal(event, 'policyModal')">политики конфиденциальности</a>.</span>
           </label>
 
           <button type="submit" class="btn" style="width: 100%; padding: 1rem;">Отправить заявку</button>
@@ -387,35 +291,58 @@
     </div>
   </main>
 
-  <!-- ФУТЕР с прямыми ссылками на документы -->
   <footer>
     <p style="font-weight: 700; color: var(--text); font-size: 1.1rem;">Бизнес-БухУчет</p>
     <p>Профессиональные услуги для ООО и ИП</p>
     <p style="margin-top: 2rem; font-size: 0.85rem;">
       &copy; 2026 Все права защищены.<br>
-      <a href="/policy.html" target="_blank" style="margin-right: 15px;">Политика конфиденциальности</a>
-      <a href="/consent.html" target="_blank">Согласие на обработку персональных данных</a>
+      <a onclick="openModal(event, 'policyModal')" style="margin-right: 15px;">Политика конфиденциальности</a>
+      <a onclick="openModal(event, 'consentModal')">Согласие на обработку данных</a>
     </p>
   </footer>
 
-  <!-- БАННЕР COOKIE с возможностью принятия или отклонения -->
   <div class="cookie-banner" id="cookieBanner">
-    <p style="font-size: 0.9rem; margin: 0;">Мы используем файлы cookie для веб-аналитики и улучшения работы сайта. <a href="/policy.html" target="_blank" style="color: #93c5fd; text-decoration: underline;">Подробнее</a></p>
+    <p style="font-size: 0.9rem; margin: 0;">Мы используем файлы cookie для веб-аналитики. <a onclick="openModal(event, 'policyModal')" style="color: #93c5fd; text-decoration: underline; cursor: pointer;">Подробнее</a></p>
     <div class="cookie-btn-group">
       <button class="cookie-btn-reject" onclick="rejectCookies()">Отклонить</button>
       <button class="cookie-btn-accept" onclick="acceptCookies()">Принять</button>
     </div>
   </div>
 
+  <!-- МОДАЛЬНЫЕ ОКНА -->
+  <div class="modal-overlay" id="policyModal" onclick="closeModal(event, this)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal(event, 'policyModal')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+      <div class="modal-title">Политика конфиденциальности</div>
+      <div class="modal-text">
+        <p>Настоящая Политика конфиденциальности описывает, как ИП Усова Наталия Викторовна (далее — Оператор) собирает, использует и защищает персональные данные пользователей сайта <b>business-buhuchet.ru</b>.</p>
+        <h4>1. Собираемые данные</h4>
+        <p>Мы собираем только те данные, которые вы добровольно предоставляете в форме заявки: ФИО, номер телефона и прочую информацию, указанную в комментариях.</p>
+        <h4>2. Цель сбора</h4>
+        <p>Данные используются исключительно для обратной связи по вашей заявке, подготовки коммерческого предложения, консультирования и оказания бухгалтерских услуг.</p>
+        <h4>3. Защита данных</h4>
+        <p>Оператор принимает все необходимые технические и организационные меры для защиты ваших данных от несанкционированного доступа, изменения, раскрытия или уничтожения. Данные не передаются третьим лицам без вашего согласия, за исключением случаев, предусмотренных законодательством РФ.</p>
+        <h4>4. Использование Cookie</h4>
+        <p>Сайт использует файлы cookie исключительно для базовой аналитики посещаемости. Вы можете отключить их использование в настройках браузера или отклонить в баннере на сайте.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="consentModal" onclick="closeModal(event, this)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal(event, 'consentModal')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+      <div class="modal-title">Согласие на обработку персональных данных</div>
+      <div class="modal-text">
+        <p>Оставляя заявку на сайте <b>business-buhuchet.ru</b>, я, в соответствии с Федеральным законом от 27.07.2006 г. № 152-ФЗ «О персональных данных», даю свое согласие ИП Усову Тимофею Виталиевичу на обработку моих персональных данных (ФИО, номер телефона, иная предоставленная информация).</p>
+        <p>Я проинформирован(а), что обработка включает сбор, запись, систематизацию, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, передачу (предоставление, доступ), блокирование, удаление и уничтожение данных в целях оказания консультационных и бухгалтерских услуг.</p>
+        <p>Настоящее согласие действует бессрочно с момента предоставления данных и может быть отозвано мной в любой момент путем направления соответствующего письменного уведомления Оператору.</p>
+      </div>
+    </div>
+  </div>
+
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const observer = new IntersectionObserver((entries) => { 
-        entries.forEach(entry => { 
-          if (entry.isIntersecting) { 
-            entry.target.classList.add('visible'); 
-          } 
-        }); 
-      }, { threshold: 0.1 });
+      const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } }); }, { threshold: 0.1 });
       document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
     });
 
@@ -436,43 +363,15 @@
       const baseName = document.querySelector('input[name="base_plan"]:checked').nextElementSibling.innerText;
       const basePrice = parseInt(document.querySelector('input[name="base_plan"]:checked').value);
       const edo = document.getElementById('calc_edo').checked;
-      const edoPrice = edo ? 2000 : 0;
-      const total = basePrice + edoPrice;
+      const total = basePrice + (edo ? 2000 : 0);
       const date = new Date().toLocaleDateString('ru-RU');
       
-      let text = "=================================================\n";
-      text += "             КОММЕРЧЕСКОЕ ПРЕДЛОЖЕНИЕ            \n";
-      text += "                  Бизнес-БухУчет                 \n";
-      text += "=================================================\n\n";
-      
-      text += "ПРЕДВАРИТЕЛЬНЫЙ РАСЧЕТ:\n";
-      text += `1. Основной тариф: ${baseName} — ${basePrice.toLocaleString('ru-RU')} руб/мес.\n`;
-      if (edo) {
-        text += `2. Дополнительная опция: Ведение ЭДО — ${edoPrice.toLocaleString('ru-RU')} руб/мес.\n`;
-      }
+      let text = "=================================================\n             КОММЕРЧЕСКОЕ ПРЕДЛОЖЕНИЕ            \n                  Бизнес-БухУчет                 \n=================================================\n\n";
+      text += `ПРЕДВАРИТЕЛЬНЫЙ РАСЧЕТ:\n1. Основной тариф: ${baseName} — ${basePrice.toLocaleString('ru-RU')} руб/мес.\n`;
+      if (edo) text += `2. Дополнительная опция: Ведение ЭДО — 2 000 руб/мес.\n`;
       text += `\nИТОГОВАЯ СТОИМОСТЬ: ${total.toLocaleString('ru-RU')} руб/мес.\n\n`;
-      
-      if (basePrice === 1000) {
-        text += "ЧТО ВХОДИТ В ТАРИФ «ПРОСТОЙ»:\n";
-        text += "- Консультации по вопросам бухгалтерии и ведения бизнеса\n";
-        text += "- Подготовка и проведение платежных поручений (до 15 шт./мес.)\n";
-        text += "- Индивидуальные консультации по специфике вашей деятельности ИП\n";
-        text += "- Особый бонус: Бесплатная сдача декларации УСН / Патента (при непрерывной оплате от 5 мес.)\n\n";
-      } else {
-        text += "ЧТО ВХОДИТ В ОБСЛУЖИВАНИЕ:\n";
-        text += "- Комплексный кадровый учет (прием, увольнение, приказы, трудовые книжки)\n";
-        text += "- Полный расчет заработной платы, отпускных и больничных\n";
-        text += "- Подготовка и сдача отчетности (СФР, ФНС) без просрочек и штрафов\n";
-        text += "- Ведение зарплатного проекта (обмен данными с банком)\n";
-        text += "- Регулярная сверка расчетов с бюджетом по налогам\n\n";
-      }
-      
-      text += "КОНТАКТЫ ДЛЯ СВЯЗИ:\n";
-      text += "Телефон: +7 919 895-34-29, +7 992 045-80-35\n";
-      text += "Сайт: business-buhuchet.ru\n\n";
-      
-      text += "Данный документ носит информационный характер и не является публичной офертой.\n";
-      text += `Дата формирования расчета: ${date}\n`;
+      text += "КОНТАКТЫ ДЛЯ СВЯЗИ:\nТелефон: +7 919 895-34-29, +7 992 045-80-35\nСайт: business-buhuchet.ru\n\n";
+      text += `Данный документ носит информационный характер.\nДата формирования расчета: ${date}\n`;
       
       const blob = new Blob([text], {type: "text/plain;charset=utf-8"});
       const link = document.createElement("a");
@@ -482,31 +381,30 @@
       URL.revokeObjectURL(link.href);
     }
 
-    /* Логика обработки Cookie и Аналитики */
-    function loadAnalytics() {
-      // Подключение скриптов аналитики (Яндекс.Метрика / Google Analytics) происходит только после явного согласия
-      console.log('Аналитические скрипты загружены.');
+    /* Модальные окна */
+    function openModal(e, modalId) {
+      if(e) e.preventDefault();
+      document.getElementById(modalId).classList.add('active');
+      document.body.style.overflow = 'hidden';
     }
 
-    function acceptCookies() {
-      localStorage.setItem('cookie_consent', 'accepted');
-      document.getElementById('cookieBanner').classList.remove('show');
-      loadAnalytics();
+    function closeModal(e, target) {
+      if(e) e.preventDefault();
+      const modal = typeof target === 'string' ? document.getElementById(target) : target;
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
     }
 
-    function rejectCookies() {
-      localStorage.setItem('cookie_consent', 'rejected');
-      document.getElementById('cookieBanner').classList.remove('show');
-    }
+    /* Cookie */
+    function loadAnalytics() { console.log('Аналитические скрипты загружены.'); }
+    function acceptCookies() { localStorage.setItem('cookie_consent', 'accepted'); document.getElementById('cookieBanner').classList.remove('show'); loadAnalytics(); }
+    function rejectCookies() { localStorage.setItem('cookie_consent', 'rejected'); document.getElementById('cookieBanner').classList.remove('show'); }
 
     window.onload = function() {
       calculateTotal();
       const consent = localStorage.getItem('cookie_consent');
-      if (!consent) {
-        setTimeout(() => document.getElementById('cookieBanner').classList.add('show'), 1000);
-      } else if (consent === 'accepted') {
-        loadAnalytics();
-      }
+      if (!consent) setTimeout(() => document.getElementById('cookieBanner').classList.add('show'), 1000);
+      else if (consent === 'accepted') loadAnalytics();
     };
   </script>
 </body>
