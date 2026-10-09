@@ -154,12 +154,24 @@
     .item.addon { background: var(--primary-soft); }
     .item.bonus { grid-column: 1 / -1; background: var(--accent-soft); }
     .item.bonus .val { color: #8a4a1f; }
+    .once { display: grid; gap: .75rem; }
+    .once-row { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1rem; padding: 1.1rem 1.2rem; border-radius: 16px; background: var(--bg); border: 1px solid transparent; transition: .25s var(--ease); }
+    .once-row:hover { background: #fff; border-color: var(--line); box-shadow: var(--shadow); }
+    .once-ico { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; background: var(--primary-soft); color: var(--primary); }
+    .once-row:nth-child(even) .once-ico { background: var(--accent-soft); color: var(--accent); }
+    .once-text h4 { font-size: 1.02rem; line-height: 1.3; }
+    .once-text p { color: var(--muted); font-size: .9rem; line-height: 1.45; margin-top: .2rem; }
+    .once-price { font-weight: 850; font-size: 1.25rem; color: var(--primary); white-space: nowrap; }
+    .once-hint { margin-top: 1.2rem; padding: .9rem 1.1rem; border-radius: 14px; background: var(--accent-soft); color: #8a4a1f; font-weight: 600; font-size: .93rem; }
+    .once-hint a { color: inherit; font-weight: 800; }
     .price-note { margin-top: 1.2rem; font-size: .88rem; color: var(--muted); text-align: center; }
 
     /* калькулятор */
     .calc { display: grid; grid-template-columns: 1.3fr .9fr; gap: 1.6rem; align-items: start; }
     .calc-box { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 1.8rem; box-shadow: var(--shadow); }
     .calc-box h3 { font-size: 1.1rem; margin-bottom: 1rem; }
+    .calc-box h3:not(:first-child) { margin-top: 1.4rem; }
+    .calc-box h3 small { font-weight: 500; color: var(--muted); font-size: .85rem; margin-left: .35rem; }
     .opt { display: flex; align-items: center; gap: .9rem; padding: 1rem 1.1rem; border: 2px solid var(--line); border-radius: 14px; cursor: pointer; margin-bottom: .7rem; transition: .2s var(--ease); background: #fff; }
     .opt:hover { border-color: var(--primary-2); }
     .opt input { width: 20px; height: 20px; accent-color: var(--primary); flex: none; cursor: pointer; }
@@ -171,6 +183,8 @@
     .total .lbl { opacity: .85; font-weight: 600; }
     .total .sum { font-size: 2.6rem; font-weight: 850; line-height: 1.1; margin: .3rem 0 .2rem; }
     .total .per { opacity: .8; font-size: .92rem; margin-bottom: 1.4rem; }
+    .total .plus { display: none; margin: -.8rem 0 1.4rem; padding: .6rem .85rem; border-radius: 12px; background: rgba(255,255,255,.13); font-weight: 700; font-size: .98rem; }
+    .total .plus.on { display: block; }
     .total ul { list-style: none; display: grid; gap: .35rem; font-size: .93rem; margin-bottom: 1.5rem; opacity: .95; }
     .total .btn { width: 100%; }
     .total .btn + .btn { margin-top: .7rem; }
@@ -264,6 +278,8 @@
       .send-row { grid-template-columns: 1fr; }
       .price-card, .calc-box, .card, .total { padding: 1.4rem; border-radius: 20px; }
       .price { font-size: 1.9rem; }
+      .once-row { grid-template-columns: auto 1fr; padding: 1rem; }
+      .once-price { grid-column: 2; font-size: 1.15rem; }
       .hero-card .stamp { right: 8px; }
       .nav .btn-sm { display: none; }
     }
@@ -343,7 +359,7 @@
           <article class="service reveal"><div class="ico" aria-hidden="true"><svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Кадры и зарплата</h3><p>Приём, перевод, увольнение, отпуска и больничные: считаем выплаты и готовим приказы и табели.</p></article>
           <article class="service reveal"><div class="ico" aria-hidden="true"><svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></div><h3>ЭДО без хлопот</h3><p>Ведём электронный документооборот (ЭДО ЛОГИСТИК и аналоги), чтобы документы с контрагентами ходили быстро.</p></article>
           <article class="service reveal"><div class="ico" aria-hidden="true"><svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Ответы на требования</h3><p>Готовим пояснения по требованиям налоговой, в том числе по контрольным соотношениям РСВ, и описи документов.</p></article>
-          <article class="service reveal"><div class="ico" aria-hidden="true"><svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><h3>Годовая отчётность и патент</h3><p>Декларации по УСН и 3-НДФЛ, заявления на патент — один раз и под ключ.</p></article>
+          <article class="service reveal"><div class="ico" aria-hidden="true"><svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><h3>Разовые услуги</h3><p>Годовые декларации по УСН и 3-НДФЛ, патент, декларация по НДС и освобождение от НДС — под ключ, без абонентской платы.</p></article>
           <article class="service reveal"><div class="ico" aria-hidden="true"><svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>Консультации</h3><p>Отвечаем на вопросы о налогах, работниках и документах простым языком — без канцелярита.</p></article>
         </div>
       </div>
@@ -362,6 +378,7 @@
           <button class="tab-btn" role="tab" id="t-small" aria-controls="small" aria-selected="false" tabindex="-1">До 8 сотрудников</button>
           <button class="tab-btn" role="tab" id="t-large" aria-controls="large" aria-selected="false" tabindex="-1">От 8 сотрудников</button>
           <button class="tab-btn" role="tab" id="t-annual" aria-controls="annual" aria-selected="false" tabindex="-1">Годовая отчётность</button>
+          <button class="tab-btn" role="tab" id="t-once" aria-controls="once" aria-selected="false" tabindex="-1">Разовые услуги</button>
         </div>
 
         <div id="simple" class="tab-panel active" role="tabpanel" aria-labelledby="t-simple">
@@ -419,13 +436,26 @@
 
         <div id="annual" class="tab-panel" role="tabpanel" aria-labelledby="t-annual">
           <div class="price-card">
-            <div class="price-head"><h3>Годовая отчётность и патент<small>разовая услуга</small></h3><div class="price">5 000 ₽ <span>/ под ключ</span></div></div>
+            <div class="price-head"><h3>Годовая отчётность<small>разовая услуга, с 1 января по 20 апреля</small></h3><div class="price">5 000 ₽ <span>/ под ключ</span></div></div>
             <div class="items">
               <div class="item"><span class="name">Годовой оборот по выпискам банка и данным ОФД по кассе, сверка с КУДиР (книгу ведёт ИП)<small class="reg">разово</small></span><span class="val">4 000 ₽</span></div>
               <div class="item"><span class="name">Сдача декларации (УСН «доходы», УСН «доходы минус расходы», 3-НДФЛ) через личный кабинет ФНС или оператора ЭДО<small class="reg">с 1 января по сроку сдачи</small></span><span class="val">500 ₽</span></div>
               <div class="item"><span class="name">Сверка с личным кабинетом ФНС: уплаченные налоги и начисленные авансы по кварталам<small class="reg">разово</small></span><span class="val">500 ₽</span></div>
-              <div class="item"><span class="name">Заявление на патент, уведомления об уменьшении патента (на страховые взносы, на расходы на ККТ), сверка страховых платежей<small class="reg">разово</small></span><span class="val">Включено</span></div>
+              <div class="item bonus"><span class="name">Всё перечисленное входит в услугу — стоимость по строкам показывает, из чего складывается 5 000 ₽</span><span class="val">итого 5 000 ₽</span></div>
             </div>
+          </div>
+        </div>
+
+        <div id="once" class="tab-panel" role="tabpanel" aria-labelledby="t-once">
+          <div class="price-card">
+            <div class="price-head"><h3>Разовые услуги<small>оплата за каждую услугу отдельно</small></h3><div class="price"><span>от</span> 2 000 ₽</div></div>
+            <div class="once">
+              <div class="once-row"><div class="once-ico" aria-hidden="true"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div><div class="once-text"><h4>Патент под ключ</h4><p>Заявление на патент, уведомления об уменьшении патента (на страховые взносы и при компенсации расходов на кассу), сверка страховых платежей.</p></div><div class="once-price">5 000 ₽</div></div>
+              <div class="once-row"><div class="once-ico" aria-hidden="true"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><div class="once-text"><h4>Декларация по НДС</h4><p>Сдача декларации, оформление книги покупок и книги продаж. Анализируем банковские выписки и отчёт о продажах из ОФД.</p></div><div class="once-price">3 000 ₽</div></div>
+              <div class="once-row"><div class="once-ico" aria-hidden="true"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15h6M9 11h2"/></svg></div><div class="once-text"><h4>Уведомление об авансовом платеже по НДФЛ</h4><p>Сдача уведомления и оформление книги учёта доходов и расходов. Анализируем банковские выписки и отчёт о продажах из ОФД.</p></div><div class="once-price">2 000 ₽</div></div>
+              <div class="once-row"><div class="once-ico" aria-hidden="true"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg></div><div class="once-text"><h4>Уведомление об освобождении от НДС</h4><p>Проконсультируем, можно ли вам получить освобождение от НДС, подготовим и сдадим уведомление.</p></div><div class="once-price">2 000 ₽</div></div>
+            </div>
+            <p class="once-hint">Любую услугу можно заказать отдельно или добавить к ежемесячному тарифу — <a href="#calc">посчитайте в калькуляторе</a>.</p>
           </div>
         </div>
         <p class="price-note reveal">Цены указаны в рублях. Информация о тарифах не является публичной офертой (ст. 437 ГК РФ): состав услуг, сроки и стоимость определяются договором.</p>
@@ -438,28 +468,35 @@
         <div class="head reveal">
           <div class="kicker">Калькулятор</div>
           <h2>Соберите свой тариф</h2>
-          <p>Выберите основу и добавьте нужные опции — стоимость пересчитается сразу.</p>
+          <p>Выберите тариф и добавьте разовые услуги — стоимость пересчитается сразу.</p>
         </div>
         <div class="calc">
           <div class="calc-box reveal">
-            <h3>Основа</h3>
-            <label class="opt"><input type="radio" name="base_plan" value="1000" data-name="Тариф «Простой» (консультации и платежи)" data-per="в месяц"><span class="t">Тариф «Простой»<small>Консультации и платёжные поручения</small></span><span class="p">1 000 ₽</span></label>
-            <label class="opt"><input type="radio" name="base_plan" value="10000" checked data-name="Базовое обслуживание (до 8 сотрудников)" data-per="в месяц"><span class="t">Базовое обслуживание<small>До 8 сотрудников</small></span><span class="p">10 000 ₽</span></label>
-            <label class="opt"><input type="radio" name="base_plan" value="12000" data-name="Расширенное обслуживание (от 8 сотрудников)" data-per="в месяц"><span class="t">Расширенное обслуживание<small>От 8 сотрудников</small></span><span class="p">12 000 ₽</span></label>
-            <label class="opt"><input type="radio" name="base_plan" value="5000" data-name="Разовая годовая отчётность" data-per="разово"><span class="t">Разовая годовая отчётность<small>УСН / 3-НДФЛ, заявление на патент</small></span><span class="p">5 000 ₽</span></label>
-            <h3 style="margin-top:1.4rem">Опции</h3>
+            <h3>Ежемесячное обслуживание</h3>
+            <label class="opt"><input type="radio" name="base_plan" value="1000" data-name="Тариф «Простой» (консультации и платежи)"><span class="t">Тариф «Простой»<small>Консультации и платёжные поручения</small></span><span class="p">1 000 ₽</span></label>
+            <label class="opt"><input type="radio" name="base_plan" value="10000" checked data-name="Базовое обслуживание (до 8 сотрудников)"><span class="t">Базовое обслуживание<small>До 8 сотрудников</small></span><span class="p">10 000 ₽</span></label>
+            <label class="opt"><input type="radio" name="base_plan" value="12000" data-name="Расширенное обслуживание (от 8 сотрудников)"><span class="t">Расширенное обслуживание<small>От 8 сотрудников</small></span><span class="p">12 000 ₽</span></label>
+            <label class="opt"><input type="radio" name="base_plan" value="0" data-name=""><span class="t">Без ежемесячного обслуживания<small>Нужны только разовые услуги</small></span><span class="p">—</span></label>
+            <h3>Опции <small>в месяц</small></h3>
             <label class="opt"><input type="checkbox" id="calc_edo" value="2000"><span class="t">Ведение ЭДО<small>ЭДО ЛОГИСТИК и аналоги</small></span><span class="p">+ 2 000 ₽</span></label>
+            <h3>Разовые услуги <small>оплачиваются один раз</small></h3>
+            <label class="opt"><input type="checkbox" class="calc_once" value="5000" data-name="Годовая отчётность (УСН / 3-НДФЛ)"><span class="t">Годовая отчётность<small>Декларация по УСН или 3-НДФЛ</small></span><span class="p">5 000 ₽</span></label>
+            <label class="opt"><input type="checkbox" class="calc_once" value="5000" data-name="Патент под ключ"><span class="t">Патент под ключ<small>Заявление, уведомления об уменьшении, сверка взносов</small></span><span class="p">5 000 ₽</span></label>
+            <label class="opt"><input type="checkbox" class="calc_once" value="3000" data-name="Декларация по НДС, книги покупок и продаж"><span class="t">Декларация по НДС<small>С книгами покупок и продаж</small></span><span class="p">3 000 ₽</span></label>
+            <label class="opt"><input type="checkbox" class="calc_once" value="2000" data-name="Уведомление об авансовом платеже по НДФЛ, книга доходов и расходов"><span class="t">Уведомление об авансе по НДФЛ<small>С книгой учёта доходов и расходов</small></span><span class="p">2 000 ₽</span></label>
+            <label class="opt"><input type="checkbox" class="calc_once" value="2000" data-name="Уведомление об освобождении от НДС"><span class="t">Освобождение от НДС<small>Консультация и уведомление</small></span><span class="p">2 000 ₽</span></label>
           </div>
           <aside class="total reveal" aria-live="polite">
             <div class="lbl">Ориентировочная стоимость</div>
             <div class="sum" id="total_price">10 000 ₽</div>
             <div class="per" id="total_per">в месяц</div>
+            <div class="plus" id="total_plus"></div>
             <ul id="total_list"></ul>
             <button type="button" class="btn btn-accent" id="kpBtn">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
               Скачать КП
             </button>
-            <a href="#contacts" class="btn btn-ghost" id="calcToForm">Обсудить этот тариф</a>
+            <a href="#contacts" class="btn btn-ghost" id="calcToForm">Обсудить этот расчёт</a>
             <p class="fine">Расчёт предварительный и не является публичной офертой.</p>
           </aside>
         </div>
@@ -494,6 +531,7 @@
           <details><summary>Как сдаётся отчётность — нужно ли мне самому ходить в налоговую?</summary><div class="a">Нет. Отчётность сдаётся в электронном виде через оператора электронного документооборота по доверенности. Мы подскажем, как её оформить.</div></details>
           <details><summary>Какие документы нужны, чтобы начать?</summary><div class="a">Обычно — реквизиты ИП или ООО, сведения о системе налогообложения, банковские выписки и данные о работниках. Точный список пришлём после знакомства.</div></details>
           <details><summary>Что входит в тариф «Простой»?</summary><div class="a">Консультации по бухгалтерии и ведению бизнеса и подготовка до 15 платёжных поручений в месяц. При оплате от 5 месяцев — бесплатная подготовка декларации по УСН или заявления на патент.</div></details>
+          <details><summary>Можно заказать одну услугу без ежемесячного обслуживания?</summary><div class="a">Да. Годовая отчётность и патент — по 5 000 ₽, декларация по НДС с книгами покупок и продаж — 3 000 ₽, уведомление об авансовом платеже по НДФЛ и уведомление об освобождении от НДС — по 2 000 ₽. Точную стоимость фиксируем в договоре.</div></details>
           <details><summary>Помогаете с требованиями налоговой?</summary><div class="a">Да, готовим пояснения по требованиям, в том числе по контрольным соотношениям РСВ, и описи документов по запросам. Стоимость зависит от объёма — обсудим при обращении.</div></details>
           <details><summary>Как оплачивать услуги?</summary><div class="a">По счёту на расчётный счёт ИП в соответствии с договором.</div></details>
         </div>
@@ -625,27 +663,40 @@
 
       // калькулятор
       function current() {
-        var base = $('input[name="base_plan"]:checked'); var edo = $('#calc_edo').checked;
-        var sum = parseInt(base.value, 10) + (edo ? 2000 : 0);
-        return { name: base.getAttribute('data-name'), per: base.getAttribute('data-per'), base: parseInt(base.value, 10), edo: edo, sum: sum };
+        var base = $('input[name="base_plan"]:checked'); var rows = [];
+        var bp = parseInt(base.value, 10);
+        if (bp) rows.push({ name: base.getAttribute('data-name'), price: bp, per: 'в месяц' });
+        if ($('#calc_edo').checked) rows.push({ name: 'Ведение ЭДО (ЭДО ЛОГИСТИК и аналоги)', price: 2000, per: 'в месяц' });
+        $$('.calc_once:checked').forEach(function (i) { rows.push({ name: i.getAttribute('data-name'), price: parseInt(i.value, 10), per: 'разово' }); });
+        var monthly = 0, once = 0;
+        rows.forEach(function (r) { if (r.per === 'разово') once += r.price; else monthly += r.price; });
+        return { rows: rows, monthly: monthly, once: once };
+      }
+      function totalText(c) {
+        if (c.monthly && c.once) return rub(c.monthly) + ' в месяц + ' + rub(c.once) + ' разово';
+        if (c.monthly) return rub(c.monthly) + ' в месяц';
+        return rub(c.once) + ' разово';
       }
       function calculateTotal() {
-        var c = current();
-        $('#total_price').textContent = rub(c.sum);
-        $('#total_per').textContent = c.per;
+        var c = current(); var empty = !c.rows.length;
+        $('#total_price').textContent = rub(c.monthly || c.once);
+        $('#total_per').textContent = empty ? 'выберите тариф или услугу' : c.monthly ? 'в месяц' : 'разово';
+        var plus = $('#total_plus'); var both = c.monthly && c.once;
+        plus.textContent = both ? '+ ' + rub(c.once) + ' разово' : ''; plus.classList.toggle('on', !!both);
         var list = $('#total_list'); list.innerHTML = '';
-        [[c.name, c.base], c.edo ? ['Ведение ЭДО', 2000] : null].filter(Boolean).forEach(function (r) {
-          var li = document.createElement('li'); li.textContent = '• ' + r[0] + ' — ' + rub(r[1]); list.appendChild(li);
+        c.rows.forEach(function (r) {
+          var li = document.createElement('li'); li.textContent = '• ' + r.name + ' — ' + rub(r.price) + (both ? ' ' + r.per : ''); list.appendChild(li);
         });
+        $('#kpBtn').disabled = empty;
       }
-      $$('input[name="base_plan"], #calc_edo').forEach(function (i) { i.addEventListener('change', calculateTotal); });
+      $$('input[name="base_plan"], #calc_edo, .calc_once').forEach(function (i) { i.addEventListener('change', calculateTotal); });
       calculateTotal();
 
       // коммерческое предложение — печатная страница (в окне печати можно сохранить в PDF)
       function esc(s) { return String(s).replace(/[&<>"]/g, function (ch) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]; }); }
       function kpHtml(c) {
         var date = new Date().toLocaleDateString('ru-RU');
-        var rows = '<tr><td>1</td><td>' + esc(c.name) + '</td><td class="r">' + esc(rub(c.base)) + '</td></tr>' + (c.edo ? '<tr><td>2</td><td>Ведение ЭДО (ЭДО ЛОГИСТИК и аналоги)</td><td class="r">' + esc(rub(2000)) + '</td></tr>' : '');
+        var rows = c.rows.map(function (r, i) { return '<tr><td>' + (i + 1) + '</td><td>' + esc(r.name) + '</td><td>' + esc(r.per) + '</td><td class="r">' + esc(rub(r.price)) + '</td></tr>'; }).join('');
         return '<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><title>Коммерческое предложение — Бизнес-БухУчет</title><style>' +
           '@page{size:A4;margin:0}body{font-family:"Segoe UI",Arial,sans-serif;color:#22302b;margin:0;padding:18mm 16mm;font-size:12pt;line-height:1.5}' +
           '.top{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid #1f5c4a;padding-bottom:10px;margin-bottom:18px}' +
@@ -656,14 +707,14 @@
           '</style></head><body>' +
           '<div class="top"><div><div class="brand">Бизнес-<span>БухУчет</span></div><div class="muted">ИП Усова Наталия Викторовна · ОГРНИП 324940100048820 · ИНН 345932810740</div></div><div class="muted" style="text-align:right">business-buhuchet.ru<br>+7 919 895-34-29<br>+7 992 045-80-35</div></div>' +
           '<h1>Коммерческое предложение</h1><p class="muted">Предварительный расчёт от ' + esc(date) + '</p>' +
-          '<table><tr><th>№</th><th>Услуга</th><th class="r">Стоимость</th></tr>' + rows + '</table>' +
-          '<div class="total">Итого: ' + esc(rub(c.sum)) + ' ' + esc(c.per) + '</div>' +
+          '<table><tr><th>№</th><th>Услуга</th><th>Оплата</th><th class="r">Стоимость</th></tr>' + rows + '</table>' +
+          '<div class="total">Итого: ' + esc(totalText(c)) + '</div>' +
           '<div class="box">Расчёт носит информационный характер и не является публичной офертой (ст. 437 ГК РФ). Состав услуг, сроки и стоимость определяются договором.</div>' +
           '<div class="bar"><button onclick="window.print()">Сохранить в PDF / печать</button></div>' +
           '</body></html>';
       }
       function downloadKP() {
-        var c = current(); var html = kpHtml(c);
+        var c = current(); if (!c.rows.length) return; var html = kpHtml(c);
         var w = window.open('', '_blank');
         if (w && w.document) { w.document.open(); w.document.write(html); w.document.close(); setTimeout(function () { try { w.focus(); w.print(); } catch (e) {} }, 400); return; }
         var blob = new Blob([html], { type: 'text/html;charset=utf-8' }); var a = document.createElement('a');
@@ -674,7 +725,7 @@
       $('#kpBtn').addEventListener('click', downloadKP);
       $('#calcToForm').addEventListener('click', function () {
         var c = current(); var f = $('#f_about');
-        if (!f.value.trim()) f.value = 'Интересует: ' + c.name + (c.edo ? ' + ведение ЭДО' : '') + ' (' + rub(c.sum).replace(' ₽', ' руб.') + ' ' + c.per + ').';
+        if (!f.value.trim() && c.rows.length) f.value = 'Интересует: ' + c.rows.map(function (r) { return r.name; }).join('; ') + ' (' + totalText(c).replace(/ ₽/g, ' руб.') + ').';
       });
 
       // заявка: текст собирается в браузере, копируется, открывается чат — сайт ничего не отправляет
