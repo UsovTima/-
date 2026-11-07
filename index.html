@@ -159,6 +159,13 @@
     .item.vat:hover { background: #fff; }
     .item.bonus { grid-column: 1 / -1; background: var(--accent-soft); }
     .item.bonus .val { color: #8a4a1f; }
+    .more summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: .5rem; font-weight: 700; color: var(--primary); padding: .65rem 1.2rem; border: 1px solid var(--line); border-radius: 999px; background: var(--bg); transition: .2s var(--ease); }
+    .more summary::-webkit-details-marker { display: none; }
+    .more summary::after { content: "+"; font-size: 1.3rem; line-height: 1; color: var(--accent); transition: transform .25s; }
+    .more[open] summary::after { transform: rotate(45deg); }
+    .more summary:hover { border-color: var(--primary); }
+    .more[open] summary { margin-bottom: 1.2rem; }
+    .price-head + .more { margin-top: -.2rem; }
     .once { display: grid; gap: .75rem; }
     .once-row { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1rem; padding: 1.1rem 1.2rem; border-radius: 16px; background: var(--bg); border: 1px solid transparent; transition: .25s var(--ease); }
     .once-row:hover { background: #fff; border-color: var(--line); box-shadow: var(--shadow); }
@@ -390,94 +397,109 @@
         <div id="simple" class="tab-panel active" role="tabpanel" aria-labelledby="t-simple">
           <div class="price-card">
             <div class="price-head"><h3>Тариф «Простой»<small>Базовое сопровождение для ИП</small></h3><div class="price">1 000 ₽ <span>/ месяц</span></div></div>
-            <div class="items">
-              <div class="item"><span class="name">Консультирование по вопросам бухгалтерии и ведения бизнеса</span><span class="val">Включено</span></div>
-              <div class="item"><span class="name">Подготовка и проведение платёжных поручений</span><span class="val">до 15 шт/мес</span></div>
-              <div class="item bonus"><span class="name">🎁 <b>Бонус:</b> бесплатная подготовка декларации по УСН или заявления на патент</span><span class="val">при оплате от 5 мес.</span></div>
-            </div>
+            <details class="more">
+              <summary>Что входит</summary>
+              <div class="items">
+                <div class="item"><span class="name">Консультирование по вопросам бухгалтерии и ведения бизнеса</span><span class="val">Включено</span></div>
+                <div class="item"><span class="name">Подготовка и проведение платёжных поручений</span><span class="val">до 15 шт/мес</span></div>
+                <div class="item bonus"><span class="name">🎁 <b>Бонус:</b> бесплатная подготовка декларации по УСН или заявления на патент</span><span class="val">при оплате от 5 мес.</span></div>
+              </div>
+            </details>
           </div>
         </div>
 
         <div id="small" class="tab-panel" role="tabpanel" aria-labelledby="t-small">
           <div class="price-card">
             <div class="price-head"><h3>ИП / ООО<small>до 8 сотрудников</small></h3><div class="price">10 000 ₽ <span>/ месяц</span></div></div>
-            <div class="items">
-              <div class="item"><span class="name">Кадровое оформление сотрудников (приём, увольнение, перевод: приказы, трудовые договоры, трудовые книжки / сведения о трудовой деятельности)<small class="reg">разово</small></span><span class="val">500 ₽</span></div>
-              <div class="item"><span class="name">Сведения о трудовой деятельности в СФР (подтверждение стажа, отчёт ЕФС-1)<small class="reg">при кадровых событиях</small></span><span class="val">500 ₽</span></div>
-              <div class="item"><span class="name">Справки сотрудникам (о доходах и суммах налога и другие подтверждающие документы)<small class="reg">по запросу</small></span><span class="val">500 ₽</span></div>
-              <div class="item"><span class="name">Табельный учёт рабочего времени<small class="reg">ежемесячно</small></span><span class="val">500 ₽</span></div>
-              <div class="item"><span class="name">Стандартные налоговые вычеты (на детей и др.)<small class="reg">ежемесячно</small></span><span class="val">500 ₽</span></div>
-              <div class="item"><span class="name">Расчётно-платёжная ведомость<small class="reg">ежемесячно</small></span><span class="val">500 ₽</span></div>
-              <div class="item"><span class="name">Расчёт среднего заработка (отпускные, командировочные, больничные пособия)<small class="reg">по мере возникновения</small></span><span class="val">1 000 ₽</span></div>
-              <div class="item"><span class="name">Зарплатный проект (обмен данными с банком, загрузка реестров)<small class="reg">ежемесячно</small></span><span class="val">1 000 ₽</span></div>
-              <div class="item"><span class="name">Персонифицированные сведения и уведомления об исчисленных налогах и взносах с ФОТ<small class="reg">ежемесячно</small></span><span class="val">1 000 ₽</span></div>
-              <div class="item"><span class="name">Квартальная отчётность по зарплате (РСВ, 6-НДФЛ, ЕФС-1)<small class="reg">ежеквартально</small></span><span class="val">3 500 ₽</span></div>
-              <div class="item"><span class="name">Сверка расчётов с бюджетом по налогам и взносам с ФОТ<small class="reg">ежемесячно</small></span><span class="val">500 ₽</span></div>
-              <div class="item bonus"><span class="name">Всё перечисленное входит в тариф — стоимость по строкам показывает, из чего складывается 10 000 ₽</span><span class="val">итого 10 000 ₽</span></div>
-              <div class="item addon"><span class="name">Ведение ЭДО (ЭДО ЛОГИСТИК)</span><span class="val">+ 2 000 ₽</span></div>
-            </div>
+            <details class="more">
+              <summary>Что входит</summary>
+              <div class="items">
+                <div class="item"><span class="name">Кадровое оформление сотрудников (приём, увольнение, перевод: приказы, трудовые договоры, трудовые книжки / сведения о трудовой деятельности)<small class="reg">разово</small></span><span class="val">500 ₽</span></div>
+                <div class="item"><span class="name">Сведения о трудовой деятельности в СФР (подтверждение стажа, отчёт ЕФС-1)<small class="reg">при кадровых событиях</small></span><span class="val">500 ₽</span></div>
+                <div class="item"><span class="name">Справки сотрудникам (о доходах и суммах налога и другие подтверждающие документы)<small class="reg">по запросу</small></span><span class="val">500 ₽</span></div>
+                <div class="item"><span class="name">Табельный учёт рабочего времени<small class="reg">ежемесячно</small></span><span class="val">500 ₽</span></div>
+                <div class="item"><span class="name">Стандартные налоговые вычеты (на детей и др.)<small class="reg">ежемесячно</small></span><span class="val">500 ₽</span></div>
+                <div class="item"><span class="name">Расчётно-платёжная ведомость<small class="reg">ежемесячно</small></span><span class="val">500 ₽</span></div>
+                <div class="item"><span class="name">Расчёт среднего заработка (отпускные, командировочные, больничные пособия)<small class="reg">по мере возникновения</small></span><span class="val">1 000 ₽</span></div>
+                <div class="item"><span class="name">Зарплатный проект (обмен данными с банком, загрузка реестров)<small class="reg">ежемесячно</small></span><span class="val">1 000 ₽</span></div>
+                <div class="item"><span class="name">Персонифицированные сведения и уведомления об исчисленных налогах и взносах с ФОТ<small class="reg">ежемесячно</small></span><span class="val">1 000 ₽</span></div>
+                <div class="item"><span class="name">Квартальная отчётность по зарплате (РСВ, 6-НДФЛ, ЕФС-1)<small class="reg">ежеквартально</small></span><span class="val">3 500 ₽</span></div>
+                <div class="item"><span class="name">Сверка расчётов с бюджетом по налогам и взносам с ФОТ<small class="reg">ежемесячно</small></span><span class="val">500 ₽</span></div>
+                <div class="item bonus"><span class="name">Всё перечисленное входит в тариф — стоимость по строкам показывает, из чего складывается 10 000 ₽</span><span class="val">итого 10 000 ₽</span></div>
+                <div class="item addon"><span class="name">Ведение ЭДО (ЭДО ЛОГИСТИК)</span><span class="val">+ 2 000 ₽</span></div>
+              </div>
+            </details>
           </div>
         </div>
 
         <div id="large" class="tab-panel" role="tabpanel" aria-labelledby="t-large">
           <div class="price-card">
             <div class="price-head"><h3>ИП / ООО<small>от 8 сотрудников</small></h3><div class="price">12 000 ₽ <span>/ месяц</span></div></div>
-            <div class="items">
-              <div class="item"><span class="name">Кадровое оформление сотрудников (приём, увольнение, перевод: приказы, трудовые договоры, трудовые книжки / сведения о трудовой деятельности)<small class="reg">разово</small></span><span class="val">600 ₽</span></div>
-              <div class="item"><span class="name">Сведения о трудовой деятельности в СФР (подтверждение стажа, отчёт ЕФС-1)<small class="reg">при кадровых событиях</small></span><span class="val">600 ₽</span></div>
-              <div class="item"><span class="name">Справки сотрудникам (о доходах и суммах налога и другие подтверждающие документы)<small class="reg">по запросу</small></span><span class="val">600 ₽</span></div>
-              <div class="item"><span class="name">Табельный учёт рабочего времени<small class="reg">ежемесячно</small></span><span class="val">600 ₽</span></div>
-              <div class="item"><span class="name">Стандартные налоговые вычеты (на детей и др.)<small class="reg">ежемесячно</small></span><span class="val">600 ₽</span></div>
-              <div class="item"><span class="name">Расчётно-платёжная ведомость<small class="reg">ежемесячно</small></span><span class="val">600 ₽</span></div>
-              <div class="item"><span class="name">Расчёт среднего заработка (отпускные, командировочные, больничные пособия)<small class="reg">по мере возникновения</small></span><span class="val">1 200 ₽</span></div>
-              <div class="item"><span class="name">Зарплатный проект (обмен данными с банком, загрузка реестров)<small class="reg">ежемесячно</small></span><span class="val">1 200 ₽</span></div>
-              <div class="item"><span class="name">Персонифицированные сведения и уведомления об исчисленных налогах и взносах с ФОТ<small class="reg">ежемесячно</small></span><span class="val">1 200 ₽</span></div>
-              <div class="item"><span class="name">Квартальная отчётность по зарплате (РСВ, 6-НДФЛ, ЕФС-1)<small class="reg">ежеквартально</small></span><span class="val">4 200 ₽</span></div>
-              <div class="item"><span class="name">Сверка расчётов с бюджетом по налогам и взносам с ФОТ<small class="reg">ежемесячно</small></span><span class="val">600 ₽</span></div>
-              <div class="item bonus"><span class="name">Всё перечисленное входит в тариф — стоимость по строкам показывает, из чего складывается 12 000 ₽</span><span class="val">итого 12 000 ₽</span></div>
-              <div class="item addon"><span class="name">Ведение ЭДО (ЭДО ЛОГИСТИК)</span><span class="val">+ 2 000 ₽</span></div>
-            </div>
+            <details class="more">
+              <summary>Что входит</summary>
+              <div class="items">
+                <div class="item"><span class="name">Кадровое оформление сотрудников (приём, увольнение, перевод: приказы, трудовые договоры, трудовые книжки / сведения о трудовой деятельности)<small class="reg">разово</small></span><span class="val">600 ₽</span></div>
+                <div class="item"><span class="name">Сведения о трудовой деятельности в СФР (подтверждение стажа, отчёт ЕФС-1)<small class="reg">при кадровых событиях</small></span><span class="val">600 ₽</span></div>
+                <div class="item"><span class="name">Справки сотрудникам (о доходах и суммах налога и другие подтверждающие документы)<small class="reg">по запросу</small></span><span class="val">600 ₽</span></div>
+                <div class="item"><span class="name">Табельный учёт рабочего времени<small class="reg">ежемесячно</small></span><span class="val">600 ₽</span></div>
+                <div class="item"><span class="name">Стандартные налоговые вычеты (на детей и др.)<small class="reg">ежемесячно</small></span><span class="val">600 ₽</span></div>
+                <div class="item"><span class="name">Расчётно-платёжная ведомость<small class="reg">ежемесячно</small></span><span class="val">600 ₽</span></div>
+                <div class="item"><span class="name">Расчёт среднего заработка (отпускные, командировочные, больничные пособия)<small class="reg">по мере возникновения</small></span><span class="val">1 200 ₽</span></div>
+                <div class="item"><span class="name">Зарплатный проект (обмен данными с банком, загрузка реестров)<small class="reg">ежемесячно</small></span><span class="val">1 200 ₽</span></div>
+                <div class="item"><span class="name">Персонифицированные сведения и уведомления об исчисленных налогах и взносах с ФОТ<small class="reg">ежемесячно</small></span><span class="val">1 200 ₽</span></div>
+                <div class="item"><span class="name">Квартальная отчётность по зарплате (РСВ, 6-НДФЛ, ЕФС-1)<small class="reg">ежеквартально</small></span><span class="val">4 200 ₽</span></div>
+                <div class="item"><span class="name">Сверка расчётов с бюджетом по налогам и взносам с ФОТ<small class="reg">ежемесячно</small></span><span class="val">600 ₽</span></div>
+                <div class="item bonus"><span class="name">Всё перечисленное входит в тариф — стоимость по строкам показывает, из чего складывается 12 000 ₽</span><span class="val">итого 12 000 ₽</span></div>
+                <div class="item addon"><span class="name">Ведение ЭДО (ЭДО ЛОГИСТИК)</span><span class="val">+ 2 000 ₽</span></div>
+              </div>
+            </details>
           </div>
         </div>
 
         <div id="vat" class="tab-panel" role="tabpanel" aria-labelledby="t-vat">
           <div class="price-card">
             <div class="price-head"><h3>Плательщикам НДС<small>ИП и ООО на УСН с НДС · с сотрудниками</small></h3><div class="price"><span>от</span> 15 000 ₽ <span>/ месяц</span></div></div>
-            <div class="items">
-              <div class="item group"><span class="name">Зарплата, кадры и отчётность по сотрудникам — всё из тарифа «До 8 сотрудников»</span><span class="val">10 000 ₽</span></div>
-              <div class="item"><span class="name">Кадровое оформление сотрудников (приём, увольнение, перевод: приказы, трудовые договоры, трудовые книжки / сведения о трудовой деятельности)<small class="reg">разово</small></span><span class="val">500 ₽</span></div>
-              <div class="item"><span class="name">Сведения о трудовой деятельности в СФР (подтверждение стажа, отчёт ЕФС-1)<small class="reg">при кадровых событиях</small></span><span class="val">500 ₽</span></div>
-              <div class="item"><span class="name">Справки сотрудникам (о доходах и суммах налога и другие подтверждающие документы)<small class="reg">по запросу</small></span><span class="val">500 ₽</span></div>
-              <div class="item"><span class="name">Табельный учёт рабочего времени<small class="reg">ежемесячно</small></span><span class="val">500 ₽</span></div>
-              <div class="item"><span class="name">Стандартные налоговые вычеты (на детей и др.)<small class="reg">ежемесячно</small></span><span class="val">500 ₽</span></div>
-              <div class="item"><span class="name">Расчётно-платёжная ведомость<small class="reg">ежемесячно</small></span><span class="val">500 ₽</span></div>
-              <div class="item"><span class="name">Расчёт среднего заработка (отпускные, командировочные, больничные пособия)<small class="reg">по мере возникновения</small></span><span class="val">1 000 ₽</span></div>
-              <div class="item"><span class="name">Зарплатный проект (обмен данными с банком, загрузка реестров)<small class="reg">ежемесячно</small></span><span class="val">1 000 ₽</span></div>
-              <div class="item"><span class="name">Персонифицированные сведения и уведомления об исчисленных налогах и взносах с ФОТ<small class="reg">ежемесячно</small></span><span class="val">1 000 ₽</span></div>
-              <div class="item"><span class="name">Квартальная отчётность по зарплате (РСВ, 6-НДФЛ, ЕФС-1)<small class="reg">ежеквартально</small></span><span class="val">3 500 ₽</span></div>
-              <div class="item"><span class="name">Сверка расчётов с бюджетом по налогам и взносам с ФОТ<small class="reg">ежемесячно</small></span><span class="val">500 ₽</span></div>
-              <div class="item group"><span class="name">Всё, что нужно для НДС</span><span class="val">5 000 ₽</span></div>
-              <div class="item vat"><span class="name">Счета-фактуры и УПД: проверка входящих, выставление исходящих и корректировочных<small class="reg">ежемесячно</small></span><span class="val">1 000 ₽</span></div>
-              <div class="item vat"><span class="name">Книга продаж и книга покупок, в том числе продажи через кассу по данным ОФД<small class="reg">ежемесячно</small></span><span class="val">1 000 ₽</span></div>
-              <div class="item vat"><span class="name">Расчёт НДС к уплате, уведомления и платежи по ЕНС (равными частями до 28-го числа)<small class="reg">ежемесячно</small></span><span class="val">500 ₽</span></div>
-              <div class="item vat"><span class="name">Декларация по НДС в электронном виде через оператора ЭДО<small class="reg">ежеквартально, до 25-го числа</small></span><span class="val">1 500 ₽</span></div>
-              <div class="item vat"><span class="name">Пояснения на требования ФНС по декларации НДС, сверка расхождений с контрагентами<small class="reg">по мере поступления</small></span><span class="val">500 ₽</span></div>
-              <div class="item vat"><span class="name">Выбор ставки (22&nbsp;% с вычетами или 5&nbsp;% / 7&nbsp;% без вычетов) и контроль лимита доходов<small class="reg">при подключении и ежемесячно</small></span><span class="val">500 ₽</span></div>
-              <div class="item bonus"><span class="name">Всё перечисленное входит в тариф — стоимость по строкам показывает, из чего складывается 15 000 ₽. При 8 и более сотрудниках зарплатная часть считается по тарифу «От 8 сотрудников» (12 000 ₽) — итого 17 000 ₽</span><span class="val">итого 15 000 ₽</span></div>
-              <div class="item addon"><span class="name">Ведение ЭДО (ЭДО ЛОГИСТИК)</span><span class="val">+ 2 000 ₽</span></div>
-            </div>
+            <details class="more">
+              <summary>Что входит</summary>
+              <div class="items">
+                <div class="item group"><span class="name">Зарплата, кадры и отчётность по сотрудникам — всё из тарифа «До 8 сотрудников»</span><span class="val">10 000 ₽</span></div>
+                <div class="item"><span class="name">Кадровое оформление сотрудников (приём, увольнение, перевод: приказы, трудовые договоры, трудовые книжки / сведения о трудовой деятельности)<small class="reg">разово</small></span><span class="val">500 ₽</span></div>
+                <div class="item"><span class="name">Сведения о трудовой деятельности в СФР (подтверждение стажа, отчёт ЕФС-1)<small class="reg">при кадровых событиях</small></span><span class="val">500 ₽</span></div>
+                <div class="item"><span class="name">Справки сотрудникам (о доходах и суммах налога и другие подтверждающие документы)<small class="reg">по запросу</small></span><span class="val">500 ₽</span></div>
+                <div class="item"><span class="name">Табельный учёт рабочего времени<small class="reg">ежемесячно</small></span><span class="val">500 ₽</span></div>
+                <div class="item"><span class="name">Стандартные налоговые вычеты (на детей и др.)<small class="reg">ежемесячно</small></span><span class="val">500 ₽</span></div>
+                <div class="item"><span class="name">Расчётно-платёжная ведомость<small class="reg">ежемесячно</small></span><span class="val">500 ₽</span></div>
+                <div class="item"><span class="name">Расчёт среднего заработка (отпускные, командировочные, больничные пособия)<small class="reg">по мере возникновения</small></span><span class="val">1 000 ₽</span></div>
+                <div class="item"><span class="name">Зарплатный проект (обмен данными с банком, загрузка реестров)<small class="reg">ежемесячно</small></span><span class="val">1 000 ₽</span></div>
+                <div class="item"><span class="name">Персонифицированные сведения и уведомления об исчисленных налогах и взносах с ФОТ<small class="reg">ежемесячно</small></span><span class="val">1 000 ₽</span></div>
+                <div class="item"><span class="name">Квартальная отчётность по зарплате (РСВ, 6-НДФЛ, ЕФС-1)<small class="reg">ежеквартально</small></span><span class="val">3 500 ₽</span></div>
+                <div class="item"><span class="name">Сверка расчётов с бюджетом по налогам и взносам с ФОТ<small class="reg">ежемесячно</small></span><span class="val">500 ₽</span></div>
+                <div class="item group"><span class="name">Всё, что нужно для НДС</span><span class="val">5 000 ₽</span></div>
+                <div class="item vat"><span class="name">Счета-фактуры и УПД: проверка входящих, выставление исходящих и корректировочных<small class="reg">ежемесячно</small></span><span class="val">1 000 ₽</span></div>
+                <div class="item vat"><span class="name">Книга продаж и книга покупок, в том числе продажи через кассу по данным ОФД<small class="reg">ежемесячно</small></span><span class="val">1 000 ₽</span></div>
+                <div class="item vat"><span class="name">Расчёт НДС к уплате, уведомления и платежи по ЕНС (равными частями до 28-го числа)<small class="reg">ежемесячно</small></span><span class="val">500 ₽</span></div>
+                <div class="item vat"><span class="name">Декларация по НДС в электронном виде через оператора ЭДО<small class="reg">ежеквартально, до 25-го числа</small></span><span class="val">1 500 ₽</span></div>
+                <div class="item vat"><span class="name">Пояснения на требования ФНС по декларации НДС, сверка расхождений с контрагентами<small class="reg">по мере поступления</small></span><span class="val">500 ₽</span></div>
+                <div class="item vat"><span class="name">Выбор ставки (22&nbsp;% с вычетами или 5&nbsp;% / 7&nbsp;% без вычетов) и контроль лимита доходов<small class="reg">при подключении и ежемесячно</small></span><span class="val">500 ₽</span></div>
+                <div class="item bonus"><span class="name">Всё перечисленное входит в тариф — стоимость по строкам показывает, из чего складывается 15 000 ₽. При 8 и более сотрудниках зарплатная часть считается по тарифу «От 8 сотрудников» (12 000 ₽) — итого 17 000 ₽</span><span class="val">итого 15 000 ₽</span></div>
+                <div class="item addon"><span class="name">Ведение ЭДО (ЭДО ЛОГИСТИК)</span><span class="val">+ 2 000 ₽</span></div>
+              </div>
+            </details>
           </div>
         </div>
 
         <div id="annual" class="tab-panel" role="tabpanel" aria-labelledby="t-annual">
           <div class="price-card">
             <div class="price-head"><h3>Годовая отчётность<small>разовая услуга, с 1 января по 20 апреля</small></h3><div class="price">5 000 ₽ <span>/ под ключ</span></div></div>
-            <div class="items">
-              <div class="item"><span class="name">Годовой оборот по выпискам банка и данным ОФД по кассе, сверка с КУДиР (книгу ведёт ИП)<small class="reg">разово</small></span><span class="val">2 500 ₽</span></div>
-              <div class="item"><span class="name">Подготовка и сдача декларации (УСН «доходы», УСН «доходы минус расходы», 3-НДФЛ) через личный кабинет ФНС или оператора ЭДО<small class="reg">с 1 января по сроку сдачи</small></span><span class="val">2 000 ₽</span></div>
-              <div class="item"><span class="name">Сверка с личным кабинетом ФНС: уплаченные налоги и начисленные авансы по кварталам<small class="reg">разово</small></span><span class="val">500 ₽</span></div>
-              <div class="item bonus"><span class="name">Всё перечисленное входит в услугу — стоимость по строкам показывает, из чего складывается 5 000 ₽. Если оборот собирать не нужно — подготовка и сдача декларации со сверкой 2 500 ₽</span><span class="val">итого 5 000 ₽</span></div>
-            </div>
+            <details class="more">
+              <summary>Что входит</summary>
+              <div class="items">
+                <div class="item"><span class="name">Годовой оборот по выпискам банка и данным ОФД по кассе, сверка с КУДиР (книгу ведёт ИП)<small class="reg">разово</small></span><span class="val">2 500 ₽</span></div>
+                <div class="item"><span class="name">Подготовка и сдача декларации (УСН «доходы», УСН «доходы минус расходы», 3-НДФЛ) через личный кабинет ФНС или оператора ЭДО<small class="reg">с 1 января по сроку сдачи</small></span><span class="val">2 000 ₽</span></div>
+                <div class="item"><span class="name">Сверка с личным кабинетом ФНС: уплаченные налоги и начисленные авансы по кварталам<small class="reg">разово</small></span><span class="val">500 ₽</span></div>
+                <div class="item bonus"><span class="name">Всё перечисленное входит в услугу — стоимость по строкам показывает, из чего складывается 5 000 ₽. Если оборот собирать не нужно — подготовка и сдача декларации со сверкой 2 500 ₽</span><span class="val">итого 5 000 ₽</span></div>
+              </div>
+            </details>
           </div>
         </div>
 
